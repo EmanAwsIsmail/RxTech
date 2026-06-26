@@ -14,8 +14,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/survey/:id" element={<PublicSurvey />} />
-
+        <Route path="/results/:id" element={<ProtectedRoute><SurveyResults /></ProtectedRoute>} />
         <Route path="/dashboard" element={
           <ProtectedRoute><Dashboard /></ProtectedRoute>
         } />
