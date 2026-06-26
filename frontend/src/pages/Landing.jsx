@@ -1,6 +1,7 @@
 // frontend/src/pages/Landing.jsx
 // Homepage — public, no login needed
 import { Link } from 'react-router-dom'
+import "../style.css";
 
 export default function Landing() {
   return (

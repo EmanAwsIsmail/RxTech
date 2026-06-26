@@ -1,0 +1,1177 @@
+/* ============================================================
+   style.css — DemandQ
+   Covers: Landing · Login · Dashboard · CreateSurvey · PublicSurvey · SurveyResults
+   Import at the top of each page component OR once in main.jsx
+
+   Breakpoints used:
+     xs  : 0–374px   (very small phones)
+     sm  : 375–639px (standard phones)
+     md  : 640–767px (large phones / small tablets)
+     lg  : 768–1023px (tablets / small laptops)
+     xl  : 1024px+   (desktops)
+
+   Prefix key:
+     .land-   Landing page
+     .login-  Login page
+     .dash-   Dashboard page
+     .create- Create Survey page
+     .survey- Public Survey page
+     .result- Survey Results page
+     .ui-     Shared UI atoms (header, buttons, inputs used across pages)
+   ============================================================ */
+
+
+/* ============================================================
+   0 — RESET & BASE
+   ============================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  color: #1e293b;
+  background: #f1f5f9;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ============================================================
+   1 — SHARED UI ATOMS  (.ui-)
+   ============================================================ */
+
+/* ── Shared page header (used on Dashboard, CreateSurvey, Results) ── */
+.ui-header {
+  background: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 0.875rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.ui-logo {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: #1e3a8a;
+  letter-spacing: -0.02em;
+}
+
+.ui-header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.ui-user-email {
+  font-size: 0.8125rem;
+  color: #94a3b8;
+  display: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 180px;
+}
+
+.ui-back-btn,
+.ui-signout-btn {
+  font-size: 0.8125rem;
+  color: #64748b;
+  background: none;
+  border: none;
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.375rem;
+  transition: color 0.15s, background 0.15s;
+  white-space: nowrap;
+}
+
+.ui-back-btn:hover,
+.ui-signout-btn:hover {
+  color: #1e293b;
+  background: #f1f5f9;
+}
+
+/* ── Primary button ── */
+.ui-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #1e3a8a;
+  color: #ffffff;
+  border: none;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  transition: background 0.2s, transform 0.1s;
+  white-space: nowrap;
+}
+
+.ui-btn-primary:hover:not(:disabled) { background: #1e40af; }
+.ui-btn-primary:active:not(:disabled) { transform: scale(0.98); }
+.ui-btn-primary:disabled { opacity: 0.55; cursor: not-allowed; }
+
+/* ── Secondary / ghost button ── */
+.ui-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #f1f5f9;
+  color: #334155;
+  border: none;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  transition: background 0.2s, transform 0.1s;
+  white-space: nowrap;
+}
+
+.ui-btn-secondary:hover:not(:disabled) { background: #e2e8f0; }
+.ui-btn-secondary:active:not(:disabled) { transform: scale(0.98); }
+.ui-btn-secondary:disabled { opacity: 0.55; cursor: not-allowed; }
+
+/* ── Small pill button ── */
+.ui-btn-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #1e293b;
+  color: #ffffff;
+  border: none;
+  border-radius: 2rem;
+  padding: 0.4375rem 1rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  transition: background 0.15s, transform 0.1s;
+  white-space: nowrap;
+}
+
+.ui-btn-pill:hover  { background: #334155; }
+.ui-btn-pill:active { transform: scale(0.98); }
+
+/* ── Text input / select ── */
+.ui-input,
+.ui-select,
+.ui-textarea {
+  width: 100%;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.625rem;
+  background: #ffffff;
+  padding: 0.625rem 0.875rem;
+  font-size: 0.9375rem;
+  font-family: inherit;
+  color: #1e293b;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.ui-input::placeholder,
+.ui-textarea::placeholder { color: #94a3b8; }
+
+.ui-input:focus,
+.ui-select:focus,
+.ui-textarea:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
+}
+
+.ui-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  padding-right: 2.25rem;
+}
+
+.ui-textarea {
+  resize: vertical;
+  min-height: 4.5rem;
+}
+
+/* ── Form label ── */
+.ui-label {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #475569;
+  margin-bottom: 0.375rem;
+}
+
+/* ── Error banner ── */
+.ui-error {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #dc2626;
+  font-size: 0.875rem;
+  border-radius: 0.625rem;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.25rem;
+}
+
+/* ── Loading text ── */
+.ui-loading {
+  font-size: 0.875rem;
+  color: #94a3b8;
+}
+
+
+/* ============================================================
+   2 — LANDING PAGE  (.land-)
+   ============================================================ */
+
+.land-page {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #f8fafc;
+  padding: 2rem 1.25rem;
+  text-align: center;
+}
+
+.land-logo {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #1e3a8a;
+  letter-spacing: -0.04em;
+  margin-bottom: 0.75rem;
+}
+
+.land-tagline {
+  font-size: 1rem;
+  color: #64748b;
+  max-width: 22rem;
+  margin: 0 auto 2rem;
+  line-height: 1.6;
+}
+
+.land-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #1e3a8a;
+  color: #ffffff;
+  border-radius: 0.75rem;
+  padding: 0.875rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.land-cta:hover  { background: #1e40af; }
+.land-cta:active { transform: scale(0.98); }
+
+@media (min-width: 640px) {
+  .land-logo    { font-size: 2.5rem; }
+  .land-tagline { font-size: 1.0625rem; }
+}
+
+
+/* ============================================================
+   3 — LOGIN PAGE  (.login-)
+   ============================================================ */
+.login-page {
+  min-height: 100dvh;
+  background: #d1d5db;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+/* Card */
+.login-card {
+  width: 100%;
+  max-width: 56rem;
+  background: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Left */
+.login-left {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  flex-shrink: 0;
+}
+
+.login-left img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.login-left-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-welcome {
+  color: #ffffff;
+  font-size: 1.75rem;
+  font-weight: 300;
+  letter-spacing: 0.55rem;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Right */
+.login-right {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  padding: 2.5rem 1.5rem;
+}
+
+.login-form-inner {
+  width: 100%;
+  max-width: 20rem;
+}
+
+.login-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  text-align: center;
+  color: #111827;
+  margin-bottom: 2.5rem;
+}
+
+/* Inputs */
+.login-field {
+  margin-bottom: 1.75rem;
+}
+
+.login-field-password {
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.login-input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #9ca3af;
+  background: transparent;
+  padding: 0.5rem 0;
+  font-size: 0.9375rem;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.login-input:focus {
+  border-bottom-color: #1e3a5f;
+}
+
+.login-input-password {
+  padding-right: 8rem;
+}
+
+/* Forgot */
+.login-forgot {
+  position: absolute;
+  right: 0;
+  top: 0.5rem;
+  font-size: 0.75rem;
+  color: #1e3a8a;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Buttons */
+.login-btn-primary {
+  width: 100%;
+  background: #1e3a8a;
+  color: #fff;
+  border: none;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 0.625rem;
+}
+
+.login-btn-primary:hover {
+  background: #1e40af;
+}
+
+.login-btn-signup {
+  width: 100%;
+  background: #f1f5f9;
+  color: #1e293b;
+  border: none;
+  border-radius: 0.75rem;
+  padding: 0.875rem;
+  cursor: pointer;
+}
+
+.login-btn-signup:hover {
+  background: #e2e8f0;
+}
+
+/* Signup row */
+.login-signup-row {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 0.875rem;
+}
+
+.login-signup-link {
+  background: none;
+  border: none;
+  color: #1e3a8a;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.login-signup-link:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+  .login-card {
+    flex-direction: row;
+    min-height: 540px;
+  }
+
+  .login-left,
+  .login-right {
+    width: 50%;
+    height: auto;
+  }
+}
+/* ============================================================
+   4 — DASHBOARD PAGE  (.dash-)
+   ============================================================ */
+
+.dash-page {
+  min-height: 100dvh;
+  background: #f1f5f9;
+}
+
+/* Reuse ui-header but expose dash-specific overrides if needed */
+.dash-header {
+  background-color: #f0f0f0;
+  padding: 1rem;
+  border-bottom: 1px solid #ccc;
+}
+.dash-main {
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
+}
+
+/* Top row */
+.dash-toprow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.dash-toprow-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.dash-toprow-sub {
+  font-size: 0.8125rem;
+  color: #94a3b8;
+  margin-top: 0.125rem;
+}
+
+/* Empty state */
+.dash-empty {
+  text-align: center;
+  padding: 3.5rem 1.5rem;
+  border: 2px dashed #e2e8f0;
+  border-radius: 1.5rem;
+  background: #ffffff;
+}
+
+.dash-empty-text {
+  font-size: 0.875rem;
+  color: #94a3b8;
+  margin-bottom: 1rem;
+}
+
+/* Survey list */
+.dash-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+/* Survey card */
+.dash-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 0.875rem 1rem;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.dash-card:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.dash-card-inner {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.dash-card-info { min-width: 0; flex: 1; }
+
+.dash-card-title {
+  font-weight: 500;
+  font-size: 0.9375rem;
+  color: #1e293b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dash-card-desc {
+  font-size: 0.8125rem;
+  color: #94a3b8;
+  margin-top: 0.125rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dash-card-date {
+  font-size: 0.6875rem;
+  color: #cbd5e1;
+  margin-top: 0.25rem;
+}
+
+.dash-card-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.375rem;
+  flex-shrink: 0;
+}
+
+.dash-btn-view {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #475569;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: color 0.15s;
+  font-family: inherit;
+}
+.dash-btn-view:hover { color: #0f172a; }
+
+.dash-btn-copy {
+  font-size: 0.6875rem;
+  color: #94a3b8;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: color 0.15s;
+  font-family: inherit;
+}
+.dash-btn-copy:hover { color: #475569; }
+
+.dash-btn-delete {
+  font-size: 0.6875rem;
+  color: #ef4444;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: color 0.15s;
+  font-family: inherit;
+}
+.dash-btn-delete:hover { color: #b91c1c; }
+
+/* ── Dashboard responsive ── */
+@media (max-width: 374px) {
+  .dash-main { padding: 1.25rem 0.875rem 2rem; }
+}
+
+@media (min-width: 640px) {
+  .dash-main          { padding: 2rem 1.5rem 3rem; }
+  .dash-toprow        { margin-bottom: 2rem; }
+  .dash-toprow-title  { font-size: 1.25rem; }
+  .dash-card          { padding: 1rem 1.25rem; }
+  .dash-card-title    { font-size: 1rem; }
+}
+
+@media (min-width: 768px) {
+  .dash-main { padding: 2.5rem 1.5rem 3rem; }
+}
+
+@media (min-width: 1024px) {
+  .dash-main { padding: 2.5rem 0 3.5rem; }
+}
+
+
+/* ============================================================
+   5 — CREATE SURVEY PAGE  (.create-)
+   ============================================================ */
+
+.create-page {
+  min-height: 100dvh;
+  background: #f8fafc;
+}
+
+.create-main {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 1.75rem 1rem 4rem;
+}
+
+.create-heading {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 1.5rem;
+}
+
+/* Field groups */
+.create-field {
+  margin-bottom: 1rem;
+}
+
+.create-section-gap {
+  margin-bottom: 1.75rem;
+}
+
+/* Question card */
+.create-question-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.875rem;
+  padding: 1.125rem;
+  margin-bottom: 0.75rem;
+  transition: border-color 0.15s;
+}
+
+.create-question-card:focus-within {
+  border-color: #93c5fd;
+}
+
+.create-question-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.create-question-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #475569;
+}
+
+.create-btn-remove-q {
+  font-size: 0.75rem;
+  color: #ef4444;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-family: inherit;
+  transition: color 0.15s;
+}
+.create-btn-remove-q:hover { color: #b91c1c; }
+
+/* Multiple choice options */
+.create-options {
+  margin-top: 0.625rem;
+}
+
+.create-options-label {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin-bottom: 0.5rem;
+}
+
+.create-option-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.create-option-input {
+  flex: 1;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.5rem;
+  background: #f8fafc;
+  padding: 0.4375rem 0.75rem;
+  font-size: 0.875rem;
+  font-family: inherit;
+  color: #1e293b;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.create-option-input::placeholder { color: #94a3b8; }
+.create-option-input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
+  background: #ffffff;
+}
+
+.create-btn-remove-opt {
+  font-size: 0.75rem;
+  color: #fca5a5;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0 0.125rem;
+  flex-shrink: 0;
+  font-family: inherit;
+  transition: color 0.15s;
+  line-height: 1;
+}
+.create-btn-remove-opt:hover { color: #ef4444; }
+
+.create-btn-add-opt {
+  font-size: 0.8125rem;
+  color: #2563eb;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem 0;
+  font-family: inherit;
+  transition: color 0.15s;
+}
+.create-btn-add-opt:hover { color: #1d4ed8; text-decoration: underline; }
+
+/* Add question dashed button */
+.create-btn-add-q {
+  width: 100%;
+  border: 2px dashed #cbd5e1;
+  background: transparent;
+  border-radius: 0.875rem;
+  padding: 0.875rem;
+  font-size: 0.875rem;
+  color: #94a3b8;
+  cursor: pointer;
+  font-family: inherit;
+  transition: border-color 0.2s, color 0.2s;
+  margin-top: 0.25rem;
+}
+.create-btn-add-q:hover {
+  border-color: #3b82f6;
+  color: #2563eb;
+}
+
+/* Submit button */
+.create-btn-submit {
+  width: 100%;
+  background: #1e3a8a;
+  color: #ffffff;
+  border: none;
+  border-radius: 0.75rem;
+  padding: 0.9375rem;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  margin-top: 2rem;
+  transition: background 0.2s, transform 0.1s;
+}
+.create-btn-submit:hover:not(:disabled)  { background: #1e40af; }
+.create-btn-submit:active:not(:disabled) { transform: scale(0.99); }
+.create-btn-submit:disabled { opacity: 0.55; cursor: not-allowed; }
+
+/* ── CreateSurvey responsive ── */
+@media (max-width: 374px) {
+  .create-main { padding: 1.25rem 0.875rem 3rem; }
+  .create-heading { font-size: 1.25rem; }
+}
+
+@media (min-width: 640px) {
+  .create-main    { padding: 2rem 1.5rem 4rem; }
+  .create-heading { font-size: 1.5rem; }
+  .create-question-card { padding: 1.25rem; }
+}
+
+@media (min-width: 768px) {
+  .create-main { padding: 2.5rem 1.5rem 4rem; }
+}
+
+@media (min-width: 1024px) {
+  .create-main { padding: 2.5rem 0 4.5rem; }
+}
+
+
+/* ============================================================
+   6 — PUBLIC SURVEY PAGE  (.survey-)
+   ============================================================ */
+
+.survey-page {
+  min-height: 100dvh;
+  background: #f8fafc;
+}
+
+.survey-main {
+  max-width: 36rem;
+  margin: 0 auto;
+  padding: 2rem 1rem 4rem;
+}
+
+.survey-header-block {
+  margin-bottom: 2rem;
+}
+
+.survey-title {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 0.5rem;
+}
+
+.survey-desc {
+  font-size: 0.9375rem;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+/* Question block */
+.survey-question-block {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.875rem;
+  padding: 1.125rem;
+  margin-bottom: 0.875rem;
+}
+
+.survey-question-text {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: #1e293b;
+  margin-bottom: 0.875rem;
+}
+
+/* Yes/No & radio options */
+.survey-radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.survey-radio-label {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-size: 0.9375rem;
+  color: #334155;
+  cursor: pointer;
+  padding: 0.4375rem 0.625rem;
+  border-radius: 0.5rem;
+  transition: background 0.15s;
+}
+.survey-radio-label:hover { background: #f1f5f9; }
+
+.survey-radio-label input[type="radio"] {
+  accent-color: #1e3a8a;
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+/* Short text answer */
+.survey-textarea {
+  width: 100%;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.625rem;
+  padding: 0.625rem 0.875rem;
+  font-size: 0.9375rem;
+  font-family: inherit;
+  color: #1e293b;
+  resize: vertical;
+  min-height: 5rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.survey-textarea::placeholder { color: #94a3b8; }
+.survey-textarea:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
+}
+
+/* Submit */
+.survey-btn-submit {
+  width: 100%;
+  background: #1e3a8a;
+  color: #ffffff;
+  border: none;
+  border-radius: 0.75rem;
+  padding: 0.9375rem;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  margin-top: 1.5rem;
+  transition: background 0.2s, transform 0.1s;
+}
+.survey-btn-submit:hover:not(:disabled)  { background: #1e40af; }
+.survey-btn-submit:active:not(:disabled) { transform: scale(0.99); }
+.survey-btn-submit:disabled { opacity: 0.55; cursor: not-allowed; }
+
+/* Thank you state */
+.survey-thankyou {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.survey-thankyou-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.survey-thankyou-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 0.5rem;
+}
+
+.survey-thankyou-text {
+  font-size: 0.9375rem;
+  color: #64748b;
+}
+
+/* ── Survey responsive ── */
+@media (max-width: 374px) {
+  .survey-main { padding: 1.5rem 0.875rem 3rem; }
+}
+
+@media (min-width: 640px) {
+  .survey-main     { padding: 2.5rem 1.5rem 4rem; }
+  .survey-title    { font-size: 1.5rem; }
+}
+
+@media (min-width: 768px) {
+  .survey-main { padding: 3rem 1.5rem 4rem; }
+}
+
+@media (min-width: 1024px) {
+  .survey-main { padding: 3rem 0 4.5rem; }
+}
+
+
+/* ============================================================
+   7 — SURVEY RESULTS PAGE  (.result-)
+   ============================================================ */
+
+.result-page {
+  min-height: 100dvh;
+  background: #f1f5f9;
+}
+
+.result-main {
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 1.75rem 1rem 4rem;
+}
+
+.result-survey-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 0.375rem;
+}
+
+.result-survey-desc {
+  font-size: 0.875rem;
+  color: #64748b;
+  margin-bottom: 2rem;
+}
+
+.result-question-block {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.result-question-text {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 1rem;
+}
+
+/* Chart container */
+.result-chart-wrap {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Insight button */
+.result-btn-insight {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #0f172a;
+  color: #ffffff;
+  border: none;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  margin-top: 2rem;
+  transition: background 0.2s, transform 0.1s;
+}
+.result-btn-insight:hover:not(:disabled)  { background: #1e293b; }
+.result-btn-insight:active:not(:disabled) { transform: scale(0.99); }
+.result-btn-insight:disabled { opacity: 0.55; cursor: not-allowed; }
+
+/* Insight box */
+.result-insight-box {
+  background: #f0f9ff;
+  border: 1px solid #bae6fd;
+  border-radius: 0.875rem;
+  padding: 1.25rem;
+  margin-top: 1.5rem;
+  font-size: 0.9375rem;
+  color: #0c4a6e;
+  line-height: 1.65;
+  white-space: pre-wrap;
+}
+
+/* ── Results responsive ── */
+@media (max-width: 374px) {
+  .result-main { padding: 1.25rem 0.875rem 3rem; }
+}
+
+@media (min-width: 640px) {
+  .result-main         { padding: 2rem 1.5rem 4rem; }
+  .result-survey-title { font-size: 1.375rem; }
+  .result-question-block { padding: 1.5rem; }
+}
+
+@media (min-width: 768px) {
+  .result-main { padding: 2.5rem 1.5rem 4rem; }
+}
+
+@media (min-width: 1024px) {
+  .result-main { padding: 2.5rem 0 4.5rem; }
+}
+
+
+/* ============================================================
+   8 — ACCESSIBILITY & MOTION
+   ============================================================ */
+
+/* Keyboard focus ring — visible for all interactive elements */
+:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+  border-radius: 0.25rem;
+}
+
+/* Respect user's reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── High contrast / dark mode hint (optional, easy to expand) ── */
+@media (prefers-color-scheme: dark) {
+  /* Intentionally minimal — DemandQ targets business users
+     who are likely on light mode. Add dark tokens here if needed. */
+}
+
+
+/* ============================================================
+   9 — UTILITIES
+   ============================================================ */
+
+.u-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.u-truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.u-flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.u-gap-sm { gap: 0.5rem; }
+.u-gap-md { gap: 1rem; }
+.u-gap-lg { gap: 1.5rem; }
+
+.u-mt-auto { margin-top: auto; }
+.u-mb-0    { margin-bottom: 0; }

@@ -1,3 +1,5 @@
+import "../style.css";
+
 export default function SurveyResults() {
   return <div>Survey Results — coming soon</div>
 }
