@@ -1,0 +1,496 @@
+/* ============================================================
+   style.css — DemandQ
+   Covers: Login page + Dashboard page
+   Place in: frontend/src/style/style.css
+   Import in Login.jsx:    import '../style/style.css'
+   Import in Dashboard.jsx: import '../style/style.css'
+   ============================================================ */
+
+/* ============================================================
+   SECTION 1 — LOGIN PAGE
+   All classes prefixed with .login-
+   ============================================================ */
+
+/* Page shell */
+.login-page {
+  min-height: 100vh;
+  background-color: #d1d5db;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+/* Card */
+.login-card {
+  width: 100%;
+  max-width: 56rem;
+  background: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 480px;
+}
+
+/* Left panel — image */
+.login-left {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  flex-shrink: 0;
+}
+
+.login-left img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.login-left-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-welcome {
+  color: #ffffff;
+  font-size: 1.75rem;
+  font-weight: 300;
+  letter-spacing: 0.55rem;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+  margin: 0;
+}
+
+/* Right panel — form */
+.login-right {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  padding: 2.5rem 1.5rem;
+}
+
+.login-form-inner {
+  width: 100%;
+  max-width: 20rem;
+}
+
+.login-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  text-align: center;
+  color: #111827;
+  margin: 0 0 2.5rem;
+  letter-spacing: -0.02em;
+}
+
+/* Error */
+.login-error {
+  color: #ef4444;
+  font-size: 0.875rem;
+  text-align: center;
+  margin-bottom: 1.25rem;
+}
+
+/* Fields */
+.login-field {
+  margin-bottom: 1.75rem;
+}
+
+.login-field-password {
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.login-input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #9ca3af;
+  background: transparent;
+  padding: 0.5rem 0;
+  font-size: 0.9375rem;
+  color: #111827;
+  outline: none;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.login-input::placeholder {
+  color: #9ca3af;
+}
+
+.login-input:focus {
+  border-bottom-color: #1e3a5f;
+}
+
+.login-input-password {
+  padding-right: 8rem;
+}
+
+/* Forgot password */
+.login-forgot {
+  position: absolute;
+  right: 0;
+  top: 0.5rem;
+  font-size: 0.75rem;
+  color: #1e3a8a;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  white-space: nowrap;
+  transition: color 0.15s;
+}
+
+.login-forgot:hover {
+  color: #1d4ed8;
+}
+
+/* Primary button */
+.login-btn-primary {
+  width: 100%;
+  background-color: #1e3a8a;
+  color: #ffffff;
+  border: none;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.login-btn-primary:hover:not(:disabled) {
+  background-color: #1e40af;
+}
+
+.login-btn-primary:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.login-btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Sign up row */
+.login-signup-row {
+  text-align: center;
+  margin-top: 5rem;
+  font-size: 0.875rem;
+  color: #4b5563;
+}
+
+.login-btn-signup {
+  background: none;
+  border: none;
+  color: #1e3a8a;
+  font-weight: 700;
+  font-size: 0.875rem;
+  cursor: pointer;
+  padding: 0;
+}
+
+.login-btn-signup:hover {
+  text-decoration: underline;
+}
+
+.login-btn-signup:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ── Login responsive ── */
+
+@media (min-width: 640px) {
+  .login-page       { padding: 1.5rem; }
+  .login-left       { height: 260px; }
+  .login-welcome    { font-size: 2.25rem; letter-spacing: 0.65rem; }
+  .login-right      { padding: 3rem 2.5rem; }
+  .login-title      { font-size: 2.75rem; margin-bottom: 3rem; }
+}
+
+@media (min-width: 768px) {
+  .login-card             { flex-direction: row; min-height: 540px; }
+  .login-left             { width: 50%; height: auto; }
+  .login-left-overlay     { align-items: flex-start; padding-top: 5rem; }
+  .login-welcome          { font-size: 2.5rem; letter-spacing: 0.7rem; }
+  .login-right            { width: 50%; padding: 3.5rem 2.5rem; }
+  .login-title            { font-size: 3rem; }
+}
+
+@media (min-width: 1024px) {
+  .login-right { padding: 4rem 3rem; }
+}
+
+
+/* ============================================================
+   SECTION 2 — DASHBOARD PAGE
+   All classes prefixed with .dash-
+   ============================================================ */
+
+/* Page shell */
+.dash-page {
+  min-height: 100vh;
+  background-color: #f1f5f9;
+}
+
+/* Header */
+.dash-header {
+  background: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.dash-logo {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: #1e293b;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.dash-header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.dash-user-email {
+  font-size: 0.8125rem;
+  color: #94a3b8;
+  display: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 180px;
+}
+
+.dash-signout-btn {
+  font-size: 0.8125rem;
+  color: #64748b;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.375rem;
+  transition: color 0.15s, background 0.15s;
+}
+
+.dash-signout-btn:hover {
+  color: #1e293b;
+  background: #f1f5f9;
+}
+
+/* Main */
+.dash-main {
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* Top row */
+.dash-toprow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.75rem;
+  gap: 1rem;
+}
+
+.dash-toprow-left h2 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 0.125rem;
+}
+
+.dash-toprow-left p {
+  font-size: 0.8125rem;
+  color: #94a3b8;
+  margin: 0;
+}
+
+.dash-new-btn {
+  background-color: #1e293b;
+  color: #ffffff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background-color 0.15s, transform 0.1s;
+}
+
+.dash-new-btn:hover  { background-color: #334155; }
+.dash-new-btn:active { transform: scale(0.98); }
+
+/* Loading */
+.dash-loading {
+  font-size: 0.875rem;
+  color: #94a3b8;
+}
+
+/* Empty state */
+.dash-empty {
+  text-align: center;
+  padding: 4rem 1.5rem;
+  border: 2px dashed #e2e8f0;
+  border-radius: 1.5rem;
+  background: #ffffff;
+}
+
+.dash-empty p {
+  font-size: 0.875rem;
+  color: #94a3b8;
+  margin: 0 0 1rem;
+}
+
+.dash-empty-btn {
+  background-color: #1e293b;
+  color: #ffffff;
+  border: none;
+  padding: 0.5rem 1.25rem;
+  border-radius: 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.15s, transform 0.1s;
+}
+
+.dash-empty-btn:hover  { background-color: #334155; }
+.dash-empty-btn:active { transform: scale(0.98); }
+
+/* Survey list */
+.dash-survey-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Survey card */
+.dash-survey-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 1rem 1.125rem;
+  transition: border-color 0.15s;
+}
+
+.dash-survey-card:hover { border-color: #cbd5e1; }
+
+.dash-survey-card-inner {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.dash-survey-info {
+  min-width: 0;
+  flex: 1;
+}
+
+.dash-survey-title {
+  font-weight: 500;
+  font-size: 0.9375rem;
+  color: #1e293b;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dash-survey-desc {
+  font-size: 0.8125rem;
+  color: #94a3b8;
+  margin: 0.125rem 0 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dash-survey-date {
+  font-size: 0.6875rem;
+  color: #cbd5e1;
+  margin: 0.25rem 0 0;
+}
+
+.dash-survey-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.375rem;
+  flex-shrink: 0;
+}
+
+.dash-view-btn {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #475569;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.15s;
+}
+
+.dash-view-btn:hover { color: #0f172a; }
+
+.dash-copy-btn {
+  font-size: 0.6875rem;
+  color: #94a3b8;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.15s;
+}
+
+.dash-copy-btn:hover { color: #475569; }
+
+/* ── Dashboard responsive ── */
+
+@media (max-width: 374px) {
+  .dash-header  { padding: 0.875rem 1rem; }
+  .dash-new-btn { font-size: 0.75rem; padding: 0.4rem 0.75rem; }
+}
+
+@media (min-width: 640px) {
+  .dash-header         { padding: 1rem 1.5rem; }
+  .dash-user-email     { display: block; }
+  .dash-main           { padding: 2.5rem 1.5rem; }
+  .dash-toprow         { margin-bottom: 2rem; }
+  .dash-toprow-left h2 { font-size: 1.25rem; }
+  .dash-survey-card    { padding: 1rem 1.25rem; }
+  .dash-survey-title   { font-size: 1rem; }
+  .dash-empty          { padding: 5rem 2rem; }
+}
+
+@media (min-width: 768px) {
+  .dash-header { padding: 1rem 2rem; }
+  .dash-main   { padding: 2.5rem 1.5rem; }
+}
+
+@media (min-width: 1024px) {
+  .dash-main { padding: 3rem 0; }
+}
