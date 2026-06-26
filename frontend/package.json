@@ -17,6 +17,9 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.0.0",
+    "autoprefixer": "^10.5.2",
+    "postcss": "^8.5.15",
+    "tailwindcss": "^4.3.1",
     "vite": "^5.0.0"
   },
   "note": "Run: npm install   to install all dependencies listed above"
