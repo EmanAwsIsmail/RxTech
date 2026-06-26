@@ -1,3 +1,6 @@
+export default function CreateSurvey() {
+  return <div>Create Survey — coming soon</div>
+}
 // CreateSurvey.jsx  (protected — requires login)
 // Screen 1: Entrepreneur creates a survey
 // Fields: title, description, up to 5 questions

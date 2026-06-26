@@ -1,3 +1,6 @@
+export default function SurveyResults() {
+  return <div>Survey Results — coming soon</div>
+}
 // SurveyResults.jsx  (protected — requires login)
 // Screen 3 + Screen 4: Shows charts for each question and the AI insight button
 // Fetches survey, questions, and responses from Supabase using the survey ID from the URL

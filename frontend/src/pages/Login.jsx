@@ -1,3 +1,6 @@
+// Login.jsx
+// Handles Sign In and Sign Up using Supabase email/password auth
+// On success: redirects to /dashboard
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { supabase } from '../lib/supabase'

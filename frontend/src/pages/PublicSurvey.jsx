@@ -1,3 +1,6 @@
+export default function PublicSurvey() {
+  return <div>Public Survey — coming soon</div>
+}
 // PublicSurvey.jsx  (public — no login needed)
 // Screen 2: Community member fills in and submits a survey
 // Gets survey ID from the URL: /survey/:id

@@ -1,3 +1,4 @@
+
 // frontend/src/pages/Dashboard.jsx
 
 import { useEffect, useState } from 'react'
@@ -5,6 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
 
 export default function Dashboard() {
+  return <div>Dashboard — coming soon</div> //I PUT THIS NOT AI, BECAUSE THE REST DOESNT WORK YET
   const navigate = useNavigate()
 
   // Stores the user's surveys

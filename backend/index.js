@@ -6,6 +6,9 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
+app.get('/api/test', (req, res) => {
+  res.json({ message: 'Backend is working' })
+})
 // POST /api/insight
 // Receives survey data and returns an AI-generated insight paragraph
 app.post('/api/insight', async (req, res) => {
