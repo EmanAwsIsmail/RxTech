@@ -1,3 +1,7 @@
+// frontend/src/pages/Dashboard.jsx  (placeholder)
+export default function Dashboard() {
+  return <h1 className="p-8 text-xl font-bold">Dashboard — coming soon</h1>
+}
 // Dashboard.jsx  (protected — requires login)
 // Shows all surveys belonging to the logged-in entrepreneur
 // Each survey has a "View Results" link and a shareable public link
