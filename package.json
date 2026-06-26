@@ -1,0 +1,20 @@
+{
+  "name": "rxtech",
+  "version": "1.0.0",
+  "description": "this is testing\r HEYY IM TESTING RN\r ## Required sections \r - The challenge you chose, and the specific problem within it\r - The target demographic and the situation they face\r - Your solution, and the impact it makes with testable claims\r - Feasibility and deployment, and scalability beyond the event\r - How to run or verify it, the tools you used, and any evidence or validation",
+  "homepage": "https://github.com/EmanAwsIsmail/RxTech#readme",
+  "bugs": {
+    "url": "https://github.com/EmanAwsIsmail/RxTech/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EmanAwsIsmail/RxTech.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
