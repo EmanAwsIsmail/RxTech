@@ -1,4 +1,3 @@
-
 // frontend/src/pages/Dashboard.jsx
 
 import { useEffect, useState } from 'react'
@@ -6,57 +5,70 @@ import { useNavigate } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
 
 export default function Dashboard() {
-  return <div>Dashboard — coming soon</div> //I PUT THIS NOT AI, BECAUSE THE REST DOESNT WORK YET
   const navigate = useNavigate()
 
-  // Stores the user's surveys
   const [surveys, setSurveys] = useState([])
-
-  // Controls loading state while data is being fetched
   const [loading, setLoading] = useState(true)
-
-  // Stores the logged-in user's email address
   const [userEmail, setUserEmail] = useState('')
 
   useEffect(() => {
-    async function load() {
-      // Get current authenticated user session
-      const {
-        data: { session },
-      } = await supabase.auth.getSession()
-
-      if (session?.user) {
-        setUserEmail(session.user.email)
-      }
-
-      // Fetch surveys from Supabase database
-      const { data, error } = await supabase
-        .from('surveys')
-        .select('*')
-        .order('created_at', { ascending: false })
-
-      if (!error) {
-        setSurveys(data)
-      }
-
-      setLoading(false)
-    }
-
-    load()
+    loadSurveys()
   }, [])
 
-  // Signs the user out and redirects to login page
+  async function loadSurveys() {
+    setLoading(true)
+
+    const {
+      data: { session },
+    } = await supabase.auth.getSession()
+
+    if (session?.user) {
+      setUserEmail(session.user.email)
+    }
+
+    const { data, error } = await supabase
+      .from('surveys')
+      .select('*')
+      .order('created_at', { ascending: false })
+
+    if (!error) {
+      setSurveys(data)
+    } else {
+      console.error(error)
+    }
+
+    setLoading(false)
+  }
+
+  async function handleDelete(id, title) {
+    const confirmed = window.confirm(
+      `Are you sure you want to delete "${title}"?\n\nThis will permanently delete the survey, all of its questions, and all responses. This action cannot be undone.`
+    )
+
+    if (!confirmed) return
+
+    const { error } = await supabase
+      .from('surveys')
+      .delete()
+      .eq('id', id)
+
+    if (error) {
+      alert(error.message)
+      return
+    }
+
+    setSurveys(prev => prev.filter(s => s.id !== id))
+  }
+
   async function handleSignOut() {
     await supabase.auth.signOut()
     navigate('/login')
   }
 
-  // Used to generate public share links
   const publicBaseUrl = window.location.origin
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header Section */}
       <header className="bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
         <h1 className="text-xl font-bold text-blue-600">DemandQ</h1>
 
@@ -75,7 +87,6 @@ export default function Dashboard() {
       </header>
 
       <main className="max-w-3xl mx-auto px-6 py-10">
-        {/* Dashboard Title and Create Survey Button */}
         <div className="flex items-center justify-between mb-8">
           <div>
             <h2 className="text-2xl font-bold text-gray-900">
@@ -97,11 +108,9 @@ export default function Dashboard() {
           </button>
         </div>
 
-        {/* Loading State */}
         {loading ? (
           <p className="text-gray-400 text-sm">Loading...</p>
         ) : surveys.length === 0 ? (
-          /* Empty State */
           <div className="text-center py-20 border-2 border-dashed border-gray-200 rounded-xl">
             <p className="text-gray-500 mb-4">
               You haven't created any surveys yet.
@@ -115,7 +124,6 @@ export default function Dashboard() {
             </button>
           </div>
         ) : (
-          /* Survey List */
           <ul className="space-y-3">
             {surveys.map((survey) => (
               <li
@@ -123,7 +131,6 @@ export default function Dashboard() {
                 className="bg-white border border-gray-200 rounded-xl px-5 py-4"
               >
                 <div className="flex items-start justify-between gap-4">
-                  {/* Survey Information */}
                   <div className="min-w-0">
                     <p className="font-semibold text-gray-900 truncate">
                       {survey.title}
@@ -141,8 +148,7 @@ export default function Dashboard() {
                     </p>
                   </div>
 
-                  {/* Survey Actions */}
-                  <div className="flex flex-col items-end gap-2 shrink-0">
+                  <div className="flex flex-col items-end gap-2 shrink-0 text-right">
                     <button
                       onClick={() => navigate(`/results/${survey.id}`)}
                       className="text-sm text-blue-600 hover:underline font-medium"
@@ -159,6 +165,13 @@ export default function Dashboard() {
                       className="text-xs text-gray-500 hover:text-gray-700"
                     >
                       Copy Share Link
+                    </button>
+
+                    <button
+                      onClick={() => handleDelete(survey.id, survey.title)}
+                      className="text-xs text-red-600 hover:text-red-800 font-medium"
+                    >
+                      Delete Survey
                     </button>
                   </div>
                 </div>
