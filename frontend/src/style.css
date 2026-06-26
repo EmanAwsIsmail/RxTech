@@ -301,33 +301,30 @@ a {
 /* ============================================================
    3 — LOGIN PAGE  (.login-)
    ============================================================ */
+/* PAGE CENTER */
 .login-page {
-  min-height: 100dvh;
-  background: #d1d5db;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
+  background: #f9fafb;
 }
 
-/* Card */
+/* MAIN FLEX CONTAINER */
 .login-card {
-  width: 100%;
-  max-width: 56rem;
-  background: #ffffff;
-  border-radius: 1rem;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  overflow: hidden;
   display: flex;
-  flex-direction: column;
+  width: 900px;
+  max-width: 95%;
+  height: 520px;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
-/* Left */
+/* LEFT SIDE IMAGE */
 .login-left {
-  position: relative;
-  width: 100%;
-  height: 200px;
-  flex-shrink: 0;
+  flex: 1;
 }
 
 .login-left img {
@@ -336,150 +333,81 @@ a {
   object-fit: cover;
 }
 
-.login-left-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.18);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.login-welcome {
-  color: #ffffff;
-  font-size: 1.75rem;
-  font-weight: 300;
-  letter-spacing: 0.55rem;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
-}
-
-/* Right */
+/* RIGHT SIDE FORM */
 .login-right {
-  width: 100%;
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #ffffff;
-  padding: 2.5rem 1.5rem;
+  padding: 2rem;
 }
 
 .login-form-inner {
   width: 100%;
-  max-width: 20rem;
+  max-width: 320px;
 }
 
+/* TITLE */
 .login-title {
-  font-size: 2.25rem;
-  font-weight: 700;
+  font-size: 24px;
+  font-weight: bold;
   text-align: center;
-  color: #111827;
-  margin-bottom: 2.5rem;
+  margin-bottom: 16px;
 }
 
-/* Inputs */
-.login-field {
-  margin-bottom: 1.75rem;
-}
-
-.login-field-password {
-  margin-bottom: 2rem;
-  position: relative;
-}
-
+/* INPUTS */
 .login-input {
   width: 100%;
-  border: none;
-  border-bottom: 1px solid #9ca3af;
-  background: transparent;
-  padding: 0.5rem 0;
-  font-size: 0.9375rem;
-  outline: none;
-  box-sizing: border-box;
+  padding: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
 }
 
-.login-input:focus {
-  border-bottom-color: #1e3a5f;
-}
-
-.login-input-password {
-  padding-right: 8rem;
-}
-
-/* Forgot */
-.login-forgot {
-  position: absolute;
-  right: 0;
-  top: 0.5rem;
-  font-size: 0.75rem;
-  color: #1e3a8a;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-/* Buttons */
+/* MAIN BUTTON */
 .login-btn-primary {
   width: 100%;
-  background: #1e3a8a;
-  color: #fff;
+  padding: 10px;
+  background: #2563eb;
+  color: white;
   border: none;
-  border-radius: 0.75rem;
-  padding: 1rem;
-  font-weight: 600;
+  border-radius: 8px;
+  margin-bottom: 8px;
   cursor: pointer;
-  margin-bottom: 0.625rem;
 }
 
-.login-btn-primary:hover {
-  background: #1e40af;
-}
-
-.login-btn-signup {
+/* SMALL BUTTON (forgot password) */
+.login-btn-small {
   width: 100%;
-  background: #f1f5f9;
-  color: #1e293b;
-  border: none;
-  border-radius: 0.75rem;
-  padding: 0.875rem;
-  cursor: pointer;
+  padding: 6px;
+  font-size: 12px;
+  margin-bottom: 12px;
 }
 
-.login-btn-signup:hover {
-  background: #e2e8f0;
+/* SECONDARY STYLE (SIGN UP SAME LOOK BUT DIFFERENT COLOR OPTIONAL) */
+.login-btn-secondary {
+  background: #e5e7eb;
+  color: black;
 }
 
-/* Signup row */
+/* SIGN UP ROW */
 .login-signup-row {
   text-align: center;
-  margin-top: 1.5rem;
-  font-size: 0.875rem;
+  font-size: 14px;
+  margin-top: 10px;
 }
 
+/* SIGNUP LINK BUTTON (same style behavior consistency) */
 .login-signup-link {
-  background: none;
   border: none;
-  color: #1e3a8a;
-  font-weight: 700;
   cursor: pointer;
-}
-
-.login-signup-link:hover {
+  font: inherit;
+  padding: 0;
+  background: none;
+  color: #2563eb;
   text-decoration: underline;
 }
 
-/* Responsive */
-@media (min-width: 768px) {
-  .login-card {
-    flex-direction: row;
-    min-height: 540px;
-  }
-
-  .login-left,
-  .login-right {
-    width: 50%;
-    height: auto;
-  }
-}
 /* ============================================================
    4 — DASHBOARD PAGE  (.dash-)
    ============================================================ */
