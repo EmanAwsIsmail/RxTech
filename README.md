@@ -1,4 +1,4 @@
- # Nuqtah AI | نقطة AI
+ # Nuqtah | نقطة 
 
 ### From Community Voices to Business Decisions
 
