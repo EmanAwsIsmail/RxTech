@@ -1,0 +1,264 @@
+/* frontend/src/styles/shared.css */
+@reference "tailwindcss";
+
+/* Loading state */
+.page-loading {
+  @apply p-6 text-center;
+}
+
+/* Page layouts */
+.page-centered {
+  @apply min-h-screen flex items-center justify-center bg-gray-50;
+}
+
+.page-centered-col {
+  @apply min-h-screen flex flex-col items-center justify-center bg-gray-50 px-6 text-center;
+}
+
+.page-shell {
+  @apply min-h-screen bg-gray-50;
+}
+
+.page-loading-center {
+  @apply min-h-screen bg-gray-50 flex items-center justify-center;
+}
+
+/* Header */
+.app-header {
+  @apply bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between;
+}
+
+.app-logo {
+  @apply text-xl font-bold text-blue-600;
+}
+
+.link-muted {
+  @apply text-sm text-gray-500 hover:text-gray-800;
+}
+
+.container-md {
+  @apply max-w-2xl mx-auto px-6 py-10;
+}
+
+.container-lg {
+  @apply max-w-3xl mx-auto px-6 py-10;
+}
+
+/* Landing page */
+.landing-title {
+  @apply text-3xl font-bold mb-3;
+}
+
+.landing-subtitle {
+  @apply text-gray-600 max-w-sm mb-8;
+}
+
+.btn-primary-lg {
+  @apply bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700;
+}
+
+/* Auth card (Login) */
+.auth-card {
+  @apply bg-white p-8 rounded-xl shadow-md w-full max-w-sm;
+}
+
+.auth-title {
+  @apply text-2xl font-bold text-center mb-2;
+}
+
+.auth-subtitle {
+  @apply text-center text-gray-500 text-sm mb-6;
+}
+
+.error-banner {
+  @apply text-red-600 text-sm text-center mb-4 bg-red-50 p-2 rounded;
+}
+
+/* Inputs */
+.input-field {
+  @apply w-full border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500;
+}
+
+.input-field-spaced {
+  @apply w-full border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 mb-3;
+}
+
+.input-field-spaced-lg {
+  @apply w-full border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 mb-5;
+}
+
+.input-field-tight {
+  @apply w-full border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 mb-3;
+}
+
+.textarea-field {
+  @apply w-full border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none;
+}
+
+.option-input {
+  @apply flex-1 border border-gray-300 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500;
+}
+
+/* Buttons */
+.btn-primary {
+  @apply w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 disabled:opacity-50 mb-2;
+}
+
+.btn-secondary {
+  @apply w-full bg-gray-100 text-gray-800 py-2 rounded-lg font-medium hover:bg-gray-200 disabled:opacity-50;
+}
+
+.btn-primary-block {
+  @apply mt-8 w-full bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 disabled:opacity-50;
+}
+
+.btn-primary-sm {
+  @apply bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700;
+}
+
+.btn-text-danger {
+  @apply text-xs text-red-500 hover:text-red-700;
+}
+
+.btn-text-danger-strong {
+  @apply text-xs text-red-600 hover:text-red-800 font-medium;
+}
+
+.btn-link-blue {
+  @apply text-sm text-blue-600 hover:underline font-medium;
+}
+
+.btn-text-muted {
+  @apply text-xs text-gray-500 hover:text-gray-700;
+}
+
+.btn-dashed {
+  @apply mt-4 w-full border-2 border-dashed border-gray-300 rounded-xl py-3 text-sm text-gray-500 hover:border-blue-400 hover:text-blue-500;
+}
+
+.btn-ai-toggle {
+  @apply text-xs font-medium text-blue-600 hover:text-blue-800 border border-blue-200 rounded-lg px-3 py-1.5 disabled:opacity-50;
+}
+
+.btn-black-block {
+  @apply w-full bg-black text-white py-2 rounded;
+}
+
+/* Cards */
+.card {
+  @apply bg-white border border-gray-200 rounded-xl;
+}
+
+.card-pad {
+  @apply bg-white border border-gray-200 rounded-xl p-5;
+}
+
+.chart-card {
+  @apply bg-white border border-gray-200 rounded-xl px-5 py-5;
+}
+
+.survey-item {
+  @apply bg-white border border-gray-200 rounded-xl px-5 py-4;
+}
+
+.question-card {
+  @apply bg-white border border-gray-200 rounded-xl p-5;
+}
+
+.question-card-header {
+  @apply flex items-center justify-between mb-3;
+}
+
+.question-label {
+  @apply text-sm font-semibold text-gray-700;
+}
+
+.option-row {
+  @apply flex gap-2 items-center;
+}
+
+/* Form helpers (CreateSurvey) */
+.field-label {
+  @apply block text-sm font-medium text-gray-700 mb-1;
+}
+
+.field-mb {
+  @apply mb-4;
+}
+
+.field-mb-lg {
+  @apply mb-8;
+}
+
+/* Text / status */
+.text-muted-sm {
+  @apply text-gray-400 text-sm;
+}
+
+.error-box {
+  @apply text-red-600 text-sm bg-red-50 p-3 rounded-lg mb-5;
+}
+
+.warning-box {
+  @apply bg-amber-50 border border-amber-200 rounded-xl px-5 py-4 mb-8;
+}
+
+.warning-text {
+  @apply text-sm text-amber-800;
+}
+
+/* Empty state */
+.empty-state {
+  @apply text-center py-20 border-2 border-dashed border-gray-200 rounded-xl;
+}
+
+/* Chart text (QuestionChart) */
+.chart-title {
+  @apply font-semibold text-gray-900 mb-4;
+}
+
+.chart-title-tight {
+  @apply font-semibold text-gray-900 mb-3;
+}
+
+.chart-footer {
+  @apply text-xs text-gray-400 mt-2 text-right;
+}
+
+.chart-footer-tight {
+  @apply text-xs text-gray-400 mt-3 text-right;
+}
+
+.answer-list-item {
+  @apply text-sm text-gray-700 bg-gray-50 rounded-lg px-4 py-2 border border-gray-100;
+}
+
+/* Public survey page */
+.public-shell {
+  @apply max-w-md mx-auto p-6;
+}
+
+.public-thankyou {
+  @apply max-w-md mx-auto p-6 text-center mt-10;
+}
+
+.radio-label {
+  @apply flex items-center gap-1;
+}
+
+/* Insight box (SurveyResults) */
+.insight-loading {
+  @apply bg-gray-50 border border-gray-200 rounded-xl px-5 py-4 text-sm text-gray-500 animate-pulse;
+}
+
+.insight-error {
+  @apply bg-red-50 border border-red-200 rounded-xl px-5 py-4 text-sm text-red-700;
+}
+
+.insight-result {
+  @apply bg-blue-50 border border-blue-200 rounded-xl px-5 py-4 text-sm text-blue-900 leading-relaxed;
+}
+
+.badge-count {
+  @apply inline-flex items-center gap-1.5 bg-blue-50 text-blue-700 text-sm font-medium px-3 py-1 rounded-full;
+}

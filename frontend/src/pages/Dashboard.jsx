@@ -69,9 +69,9 @@ export default function Dashboard() {
   const publicBaseUrl = window.location.origin
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <header className="bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
-        <h1 className="text-xl font-bold text-blue-600">DemandQ</h1>
+    <div className="page-shell">
+      <header className="app-header">
+        <h1 className="app-logo">DemandQ</h1>
 
         <div className="flex items-center gap-4">
           <span className="text-sm text-gray-500 hidden sm:block">
@@ -87,7 +87,7 @@ export default function Dashboard() {
         </div>
       </header>
 
-      <main className="max-w-3xl mx-auto px-6 py-10">
+      <main className="container-lg">
         <div className="flex items-center justify-between mb-8">
           <div>
             <h2 className="text-2xl font-bold text-gray-900">
@@ -103,16 +103,16 @@ export default function Dashboard() {
 
           <button
             onClick={() => navigate('/create')}
-            className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700"
+            className="btn-primary-sm"
           >
             + New Survey
           </button>
         </div>
 
         {loading ? (
-          <p className="text-gray-400 text-sm">Loading...</p>
+          <p className="text-muted-sm">Loading...</p>
         ) : surveys.length === 0 ? (
-          <div className="text-center py-20 border-2 border-dashed border-gray-200 rounded-xl">
+          <div className="empty-state">
             <p className="text-gray-500 mb-4">
               You haven't created any surveys yet.
             </p>
@@ -129,7 +129,7 @@ export default function Dashboard() {
             {surveys.map((survey) => (
               <li
                 key={survey.id}
-                className="bg-white border border-gray-200 rounded-xl px-5 py-4"
+                className="survey-item"
               >
                 <div className="flex items-start justify-between gap-4">
                   <div className="min-w-0">
@@ -152,7 +152,7 @@ export default function Dashboard() {
                   <div className="flex flex-col items-end gap-2 shrink-0 text-right">
                     <button
                       onClick={() => navigate(`/results/${survey.id}`)}
-                      className="text-sm text-blue-600 hover:underline font-medium"
+                      className="btn-link-blue"
                     >
                       View Results
                     </button>
@@ -163,14 +163,14 @@ export default function Dashboard() {
                         navigator.clipboard.writeText(link)
                         alert('Link copied!')
                       }}
-                      className="text-xs text-gray-500 hover:text-gray-700"
+                      className="btn-text-muted"
                     >
                       Copy Share Link
                     </button>
 
                     <button
                       onClick={() => handleDelete(survey.id, survey.title)}
-                      className="text-xs text-red-600 hover:text-red-800 font-medium"
+                      className="btn-text-danger-strong"
                     >
                       Delete Survey
                     </button>

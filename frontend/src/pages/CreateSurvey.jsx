@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
-
+import '../styles/shared.css'
 const emptyQuestion = () => ({
   question_text: '',
   question_type: 'yes_no',
@@ -98,55 +98,55 @@ export default function CreateSurvey() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <header className="bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
-        <h1 className="text-xl font-bold text-blue-600">DemandQ</h1>
-        <button onClick={() => navigate('/dashboard')} className="text-sm text-gray-500 hover:text-gray-800">
+    <div className="page-shell">
+      <header className="app-header">
+        <h1 className="app-logo">DemandQ</h1>
+        <button onClick={() => navigate('/dashboard')} className="link-muted">
           ← Back
         </button>
       </header>
 
-      <main className="max-w-2xl mx-auto px-6 py-10">
+      <main className="container-md">
         <h2 className="text-2xl font-bold text-gray-900 mb-6">Create a survey</h2>
 
         {error && (
-          <p className="text-red-600 text-sm bg-red-50 p-3 rounded-lg mb-5">{error}</p>
+          <p className="error-box">{error}</p>
         )}
 
         {/* Title */}
-        <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700 mb-1">Survey title *</label>
+        <div className="field-mb">
+          <label className="field-label">Survey title *</label>
           <input
             type="text"
             value={title}
             onChange={e => setTitle(e.target.value)}
             placeholder="e.g. Would you use a pharmacy in Al Qua'a?"
-            className="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="input-field"
           />
         </div>
 
         {/* Description */}
-        <div className="mb-8">
-          <label className="block text-sm font-medium text-gray-700 mb-1">Description (optional)</label>
+        <div className="field-mb-lg">
+          <label className="field-label">Description (optional)</label>
           <textarea
             value={description}
             onChange={e => setDescription(e.target.value)}
             placeholder="Briefly explain what this survey is about"
             rows={2}
-            className="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+            className="textarea-field"
           />
         </div>
 
         {/* Questions */}
         <div className="space-y-5">
           {questions.map((q, qIndex) => (
-            <div key={qIndex} className="bg-white border border-gray-200 rounded-xl p-5">
-              <div className="flex items-center justify-between mb-3">
-                <span className="text-sm font-semibold text-gray-700">Question {qIndex + 1}</span>
+            <div key={qIndex} className="question-card">
+              <div className="question-card-header">
+                <span className="question-label">Question {qIndex + 1}</span>
                 {questions.length > 1 && (
                   <button
                     onClick={() => removeQuestion(qIndex)}
-                    className="text-xs text-red-500 hover:text-red-700"
+                    className="btn-text-danger"
                   >
                     Remove
                   </button>
@@ -158,13 +158,13 @@ export default function CreateSurvey() {
                 value={q.question_text}
                 onChange={e => updateQuestion(qIndex, 'question_text', e.target.value)}
                 placeholder="Enter your question"
-                className="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm mb-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="input-field-tight"
               />
 
               <select
                 value={q.question_type}
                 onChange={e => updateQuestion(qIndex, 'question_type', e.target.value)}
-                className="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm mb-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="input-field-tight"
               >
                 <option value="yes_no">Yes / No</option>
                 <option value="multiple_choice">Multiple Choice</option>
@@ -175,13 +175,13 @@ export default function CreateSurvey() {
                 <div className="space-y-2 mt-2">
                   <p className="text-xs text-gray-500 mb-1">Options</p>
                   {q.options.map((opt, oIndex) => (
-                    <div key={oIndex} className="flex gap-2 items-center">
+                    <div key={oIndex} className="option-row">
                       <input
                         type="text"
                         value={opt}
                         onChange={e => updateOption(qIndex, oIndex, e.target.value)}
                         placeholder={`Option ${oIndex + 1}`}
-                        className="flex-1 border border-gray-300 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="option-input"
                       />
                       {q.options.length > 2 && (
                         <button
@@ -211,7 +211,7 @@ export default function CreateSurvey() {
         {questions.length < 5 && (
           <button
             onClick={addQuestion}
-            className="mt-4 w-full border-2 border-dashed border-gray-300 rounded-xl py-3 text-sm text-gray-500 hover:border-blue-400 hover:text-blue-500"
+            className="tbtn-dashed"
           >
             + Add question ({questions.length}/5)
           </button>
@@ -221,7 +221,7 @@ export default function CreateSurvey() {
         <button
           onClick={handleCreate}
           disabled={saving}
-          className="mt-8 w-full bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 disabled:opacity-50"
+          className="btn-primary-block"
         >
           {saving ? 'Saving...' : 'Create Survey'}
         </button>
