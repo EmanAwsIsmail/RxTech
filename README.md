@@ -1,6 +1,4 @@
-For Tatweer, the README should read like a **startup pitch + evidence document**, not a school project. Judges are explicitly scoring the README on impact, relevance, feasibility, scalability, evidence, and completeness. 
-
-# Nuqtah AI | نقطة AI
+ # Nuqtah AI | نقطة AI
 
 ### From Community Voices to Business Decisions
 
@@ -376,7 +374,7 @@ This workflow directly addresses the challenge objective of helping entrepreneur
 # Live Demo
 
 **Frontend:**
-[Insert Netlify URL]
+[https://deluxe-tartufo-6439fb.netlify.app/]
 
 **Backend API:**
 [Insert Railway URL]
