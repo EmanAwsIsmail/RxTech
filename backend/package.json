@@ -9,7 +9,8 @@
   "dependencies": {
     "cors": "^2.8.6",
     "dotenv": "^16.6.1",
-    "express": "^4.22.2"
+    "express": "^4.22.2",
+    "groq-sdk": "^1.3.0"
   },
   "note": "Run: npm install   to install all dependencies listed above. Add your LLM SDK here when chosen.",
   "keywords": [],

@@ -20,41 +20,71 @@ import loginBg from '../../src/Images/login_image.png'
 // Anonymous sign-ins are disabled
 
 export default function Login() {
+  const texts = {
+  en: {
+    titleLogin: 'Login',
+    titleSignup: 'Sign Up',
+    email: 'Email',
+    password: 'Password',
+    login: 'Login',
+    signup: 'Sign up',
+    forgot: 'Forgot password?',
+    noAccount: "Don't have an account?",
+    haveAccount: "Already have an account?",
+    switchTo: 'العربية',
+    loginMessage:'Enter your email and password',
+    signupMessage: 'Enter new email and password'
+  },
+  ar: {
+    titleLogin: 'تسجيل الدخول',
+    titleSignup: 'إنشاء حساب',
+    email: 'البريد الإلكتروني',
+    password: 'كلمة المرور',
+    login: 'تسجيل الدخول',
+    signup: 'إنشاء حساب',
+    forgot: 'هل نسيت كلمة المرور؟',
+    noAccount: 'ليس لديك حساب؟',
+    haveAccount: 'لديك حساب بالفعل؟',
+    switchTo: 'English',
+    loginMessage: 'أدخل البريد الإلكتروني وكلمة المرور',
+    signupMessage: 'أدخل بريداً إلكترونياً وكلمة مرور جديدة'
+  },
+} 
+
+  const [lang, setLang] = useState('en')
   const navigate = useNavigate()
   const [email, setEmail]       = useState('')
   const [password, setPassword] = useState('')
   const [error, setError]       = useState('')
   const [loading, setLoading]   = useState(false)
   const [isSignup, setIsSignup] = useState(false)
+function handleKeyDown(e) {
+  if (e.key === 'Enter') handleSubmit()
+}
 
-  async function handleSignIn() {
-    setError('')
-    setLoading(true)
-    const { error } = await supabase.auth.signInWithPassword({ email, password })
-    setLoading(false)
-    if (error) setError(error.message)
-    else navigate('/dashboard')
-  }
-
-  async function handleSignUp() {
+async function handleSubmit() {
   setError('')
   setLoading(true)
 
-  const { error } = await supabase.auth.signUp({ email, password })
+  const result = isSignup
+    ? await supabase.auth.signUp({ email, password })
+    : await supabase.auth.signInWithPassword({ email, password })
 
-  setLoading(false)
-
-  if (error) {
-    // 👇 custom friendly message override
-    if (error.message.includes('Anonymous sign-ins are disabled')) {
-      setError('Enter new email and password to sign up')
-    } 
+  if (result.error) {
+    setError(
+      isSignup
+        ? texts[lang].signupMessage
+        : texts[lang].loginMessage
+    )
   } else {
     navigate('/dashboard')
   }
+
+  setLoading(false)
 }
+
   function handleKeyDown(e) {
-    if (e.key === 'Enter') handleSignIn()
+    if (e.key === 'Enter') handleSubmit()
   }
 
   async function handleSubmit() {
@@ -75,9 +105,15 @@ export default function Login() {
 }
 
 return (
-  <div className="login-page">
+  <div className="login-page" dir={lang === 'ar' ? 'rtl' : 'ltr'}>
     <div className="login-card">
-
+    <button
+      type="button"
+      className="lang-switch"
+      onClick={() => setLang(lang === 'en' ? 'ar' : 'en')}
+    >
+      {texts[lang].switchTo}
+    </button>
       {/* LEFT IMAGE */}
       <div className="login-left">
         <img
@@ -92,69 +128,75 @@ return (
         <div className="login-form-inner">
 
         <h1 className="login-title">
-          {isSignup ? 'Sign Up' : 'Login'}
+          {isSignup ? texts[lang].titleSignup : texts[lang].titleLogin}
         </h1>
 
           {error && (
             <p className="login-error" role="alert">{error}</p>
           )}
-
+          <button
+            type="button"
+            className="lang-switch"
+            onClick={() => setLang(lang === 'en' ? 'ar' : 'en')}
+          >
+            {texts[lang].switchTo}
+          </button>
           {/* Email */}
-          <input
+                      <input
             type="email"
             className="login-input"
-            placeholder="Email"
+            placeholder={texts[lang].email}
             value={email}
-            onChange={e => setEmail(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
             onKeyDown={handleKeyDown}
-            autoComplete="email"
-            autoFocus
           />
 
-          {/* Password */}
           <input
             type="password"
             className="login-input"
-            placeholder="Password"
+            placeholder={texts[lang].password}
             value={password}
-            onChange={e => setPassword(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
             onKeyDown={handleKeyDown}
-            autoComplete="current-password"
           />
 
           {/* Login */}
-          <button
-          type="button"
+        <button
           className="login-btn-primary"
           onClick={handleSubmit}
           disabled={loading}
         >
-          {loading ? 'Please wait…' : isSignup ? 'Sign Up' : 'Login'}
+          {loading
+            ? lang === 'ar'
+              ? 'جاري التحميل...'
+              : 'Loading...'
+            : isSignup
+              ? texts[lang].signup
+              : texts[lang].login}
         </button>
 
           {/* Forgot password */}
-          <button
-            type="button"
-            className="login-btn-primary login-btn-small"
-            onClick={() => alert('Password reset coming soon.')}
-          >
-            Forgot password?
+          <button className="login-btn-primary login-btn-small">
+            {texts[lang].forgot}
           </button>
 
 
           {/* Sign up */}
           <p className="login-signup-row">
-          {isSignup ? 'Already have an account?' : "Don't have an account?"}
-          &nbsp;
+            {isSignup ? texts[lang].haveAccount : texts[lang].noAccount}
+            &nbsp;
 
-          <button
-            type="button"
-            className="login-signup-link"
-            onClick={() => setIsSignup(!isSignup)}
-          >
-            {isSignup ? 'Login' : 'Sign up'}
-          </button>
-        </p>
+            <button
+              type="button"
+              className="login-signup-link"
+              onClick={() => {
+                setIsSignup(!isSignup)
+                setError('')
+              }}
+            >
+              {isSignup ? texts[lang].login : texts[lang].signup}
+            </button>
+          </p>
 
         </div>
       </div>

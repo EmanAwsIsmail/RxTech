@@ -3,9 +3,53 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
-import "../style.css";
+import '../style.css'
 
 export default function Dashboard() {
+  const [lang, setLang] = useState('en')
+
+const texts = {
+  en: {
+    welcome: 'Welcome back',
+    signOut: 'Sign out',
+    totalSurveys: 'Total Surveys',
+    results: 'Results',
+    viewResponses: 'View responses',
+    share: 'Share',
+    copySurveyLinks: 'Copy survey links',
+    yourSurveys: 'Your surveys',
+    noSurveys: 'No surveys yet',
+    newSurvey: '+ New Survey',
+    loading: 'Loading...',
+    empty: "You haven't created any surveys yet.",
+    createFirst: 'Create your first survey',
+    created: 'Created',
+    copyLink: 'Copy Link',
+    delete: 'Delete',
+    linkCopied: 'Link copied!',
+    switchTo: 'العربية'
+  },
+  ar: {
+    welcome: 'مرحباً بعودتك',
+    signOut: 'تسجيل الخروج',
+    totalSurveys: 'إجمالي الاستبيانات',
+    results: 'النتائج',
+    viewResponses: 'عرض الردود',
+    share: 'مشاركة',
+    copySurveyLinks: 'نسخ روابط الاستبيان',
+    yourSurveys: 'استبياناتك',
+    noSurveys: 'لا توجد استبيانات بعد',
+    newSurvey: '+ استبيان جديد',
+    loading: 'جاري التحميل...',
+    empty: 'لم تقم بإنشاء أي استبيان بعد.',
+    createFirst: 'أنشئ أول استبيان',
+    created: 'تم الإنشاء',
+    copyLink: 'نسخ الرابط',
+    delete: 'حذف',
+    linkCopied: 'تم نسخ الرابط!',
+    switchTo: 'English'
+  }
+}
   const navigate = useNavigate()
 
   const [surveys, setSurveys] = useState([])
@@ -32,20 +76,14 @@ export default function Dashboard() {
       .select('*')
       .order('created_at', { ascending: false })
 
-    if (!error) {
-      setSurveys(data)
-    } else {
-      console.error(error)
-    }
+    if (!error) setSurveys(data)
+    else console.error(error)
 
     setLoading(false)
   }
 
   async function handleDelete(id, title) {
-    const confirmed = window.confirm(
-      `Are you sure you want to delete "${title}"?\n\nThis will permanently delete the survey, all of its questions, and all responses. This action cannot be undone.`
-    )
-
+    const confirmed = window.confirm(`Delete "${title}"?`)
     if (!confirmed) return
 
     const { error } = await supabase
@@ -69,117 +107,137 @@ export default function Dashboard() {
   const publicBaseUrl = window.location.origin
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <header className="bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
-        <h1 className="text-xl font-bold text-blue-600">DemandQ</h1>
+      <div className="dash-page" dir={lang === 'ar' ? 'rtl' : 'ltr'}>
+      <aside className="dash-sidebar">
+        <div className="dash-menu">☰</div>
+        <button>🏠</button>
+        <button>📊</button>
+        <button>📝</button>
+        <button>👤</button>
+        <button>⚙️</button>
+      </aside>
 
-        <div className="flex items-center gap-4">
-          <span className="text-sm text-gray-500 hidden sm:block">
-            {userEmail}
-          </span>
-
-          <button
-            onClick={handleSignOut}
-            className="text-sm text-gray-600 hover:text-gray-900"
-          >
-            Sign out
-          </button>
-        </div>
-      </header>
-
-      <main className="max-w-3xl mx-auto px-6 py-10">
-        <div className="flex items-center justify-between mb-8">
+      <main className="dash-container">
+        <section className="dash-hero">
           <div>
-            <h2 className="text-2xl font-bold text-gray-900">
-              Your surveys
-            </h2>
+            <h1>DemandQ</h1>
+            <p>{texts[lang].welcome}, {userEmail || 'User'} 👋</p>
 
-            <p className="text-sm text-gray-500 mt-1">
-              {surveys.length === 0
-                ? 'No surveys yet'
-                : `${surveys.length} survey${surveys.length !== 1 ? 's' : ''}`}
-            </p>
-          </div>
+            <button onClick={handleSignOut} className="dash-signout">
+              {texts[lang].signOut}
+            </button>
 
-          <button
-            onClick={() => navigate('/create')}
-            className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700"
-          >
-            + New Survey
-          </button>
-        </div>
+            <p>{texts[lang].totalSurveys}</p>
 
-        {loading ? (
-          <p className="text-gray-400 text-sm">Loading...</p>
-        ) : surveys.length === 0 ? (
-          <div className="text-center py-20 border-2 border-dashed border-gray-200 rounded-xl">
-            <p className="text-gray-500 mb-4">
-              You haven't created any surveys yet.
-            </p>
+            <h2>{texts[lang].yourSurveys}</h2>
 
-            <button
-              onClick={() => navigate('/create')}
-              className="bg-blue-600 text-white px-5 py-2 rounded-lg text-sm font-medium hover:bg-blue-700"
-            >
-              Create your first survey
+            <button onClick={() => navigate('/create')} className="dash-new-btn">
+              {texts[lang].newSurvey}
             </button>
           </div>
-        ) : (
-          <ul className="space-y-3">
-            {surveys.map((survey) => (
-              <li
-                key={survey.id}
-                className="bg-white border border-gray-200 rounded-xl px-5 py-4"
-              >
-                <div className="flex items-start justify-between gap-4">
-                  <div className="min-w-0">
-                    <p className="font-semibold text-gray-900 truncate">
-                      {survey.title}
-                    </p>
 
-                    {survey.description && (
-                      <p className="text-sm text-gray-500 mt-0.5 truncate">
-                        {survey.description}
-                      </p>
-                    )}
+          <button onClick={handleSignOut} className="dash-signout">
+            Sign out
+          </button>
 
-                    <p className="text-xs text-gray-400 mt-1">
-                      Created{' '}
-                      {new Date(survey.created_at).toLocaleDateString()}
-                    </p>
-                  </div>
+          <button
+          className="dash-lang-btn"
+          onClick={() => setLang(lang === 'en' ? 'ar' : 'en')}
+        >
+          {texts[lang].switchTo}
+        </button>
 
-                  <div className="flex flex-col items-end gap-2 shrink-0 text-right">
-                    <button
-                      onClick={() => navigate(`/results/${survey.id}`)}
-                      className="text-sm text-blue-600 hover:underline font-medium"
-                    >
-                      View Results
+        </section>
+
+        <section className="dash-stats">
+          <div className="dash-stat-card">
+            <span>📋</span>
+            <h3>{surveys.length}</h3>
+            <p>Total Surveys</p>
+          </div>
+
+          <div className="dash-stat-card">
+            <span>📈</span>
+            <h3>Results</h3>
+            <p>View responses</p>
+          </div>
+
+          <div className="dash-stat-card">
+            <span>🔗</span>
+            <h3>Share</h3>
+            <p>Copy survey links</p>
+          </div>
+        </section>
+
+        <section className="dash-content">
+          <div className="dash-content-header">
+            <div>
+              <h2>Your surveys</h2>
+              <p>
+                {surveys.length === 0
+                  ? 'No surveys yet'
+                  : `${surveys.length} survey${surveys.length !== 1 ? 's' : ''}`}
+              </p>
+            </div>
+
+            <button onClick={() => navigate('/create')} className="dash-new-btn">
+              + New Survey
+            </button>
+          </div>
+
+          {loading ? (
+            <p className="dash-loading">Loading...</p>
+          ) : surveys.length === 0 ? (
+            <div className="dash-empty">
+              <div className="dash-empty-icon">📝</div>
+              <p>You haven't created any surveys yet.</p>
+              <button onClick={() => navigate('/create')}>
+                Create your first survey
+              </button>
+            </div>
+          ) : (
+            <div className="dash-grid">
+              {surveys.map((survey) => (
+                <div key={survey.id} className="dash-survey-card">
+                  <div className="dash-card-icon">📋</div>
+
+                  <h3>{survey.title}</h3>
+
+                  {survey.description && (
+                    <p>{survey.description}</p>
+                  )}
+
+                  <small>
+                    Created {new Date(survey.created_at).toLocaleDateString()}
+                  </small>
+
+                  <div className="dash-card-actions">
+                    <button onClick={() => navigate(`/results/${survey.id}`)}>
+                      📊 Results
                     </button>
 
                     <button
                       onClick={() => {
                         const link = `${publicBaseUrl}/survey/${survey.id}`
                         navigator.clipboard.writeText(link)
-                        alert('Link copied!')
+                        alert(texts[lang].linkCopied)
                       }}
-                      className="text-xs text-gray-500 hover:text-gray-700"
                     >
-                      Copy Share Link
+                      🔗 Copy Link
                     </button>
 
                     <button
+                      className="delete"
                       onClick={() => handleDelete(survey.id, survey.title)}
-                      className="text-xs text-red-600 hover:text-red-800 font-medium"
                     >
-                      Delete Survey
+                      🗑 Delete
                     </button>
                   </div>
                 </div>
-              </li>
-            ))}
-          </ul>
-        )}
+              ))}
+            </div>
+          )}
+        </section>
       </main>
     </div>
   )
