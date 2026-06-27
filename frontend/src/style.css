@@ -250,108 +250,51 @@ a {
    ============================================================ */
 
 .land-page {
-  min-height: 100vh;
-  position: relative;
-  overflow: hidden;
-  background: #0f6f8f;
+  min-height: 100dvh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-/* IMAGE PARTS */
-.land-split {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 50%;
-  overflow: hidden;
-  z-index: 1;
-}
-
-.land-split img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.land-top {
-  top: 0;
-}
-
-.land-bottom {
-  bottom: 0;
-}
-
-/* CENTER CARD */
-.land-content {
-  position: relative;
-  z-index: 5;
-  background: rgba(255, 255, 255, 0.92);
-  padding: 2.5rem;
-  border-radius: 2rem;
+  background: #f8fafc;
+  padding: 2rem 1.25rem;
   text-align: center;
-  max-width: 430px;
-  margin: 1rem;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
 }
 
 .land-logo {
-  font-size: 2.8rem;
+  font-size: 2rem;
   font-weight: 800;
-  color: #0f2f4f;
+  color: #1e3a8a;
+  letter-spacing: -0.04em;
   margin-bottom: 0.75rem;
 }
 
 .land-tagline {
   font-size: 1rem;
-  color: #475569;
+  color: #64748b;
+  max-width: 22rem;
+  margin: 0 auto 2rem;
   line-height: 1.6;
-  margin-bottom: 2rem;
 }
 
 .land-cta {
-  border: none;
-  cursor: pointer;
-  background: #e97755;
-  color: white;
-  padding: 0.9rem 2rem;
-  border-radius: 1rem;
-  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #1e3a8a;
+  color: #ffffff;
+  border-radius: 0.75rem;
+  padding: 0.875rem 2rem;
   font-size: 1rem;
+  font-weight: 600;
+  transition: background 0.2s, transform 0.1s;
 }
 
-/* WHEN GOING TO LOGIN */
-.land-leaving .land-top {
-  animation: topSlideAway 1.2s ease forwards;
-}
+.land-cta:hover  { background: #1e40af; }
+.land-cta:active { transform: scale(0.98); }
 
-.land-leaving .land-bottom {
-  animation: bottomSlideAway 1.2s ease forwards;
-}
-
-.land-leaving .land-content {
-  animation: fadeAway 0.6s ease forwards;
-}
-
-/* ANIMATIONS */
-@keyframes topSlideAway {
-  to {
-    transform: translateY(-100%);
-  }
-}
-
-@keyframes bottomSlideAway {
-  to {
-    transform: translateY(100%);
-  }
-}
-
-@keyframes fadeAway {
-  to {
-    opacity: 0;
-    transform: scale(0.9);
-  }
+@media (min-width: 640px) {
+  .land-logo    { font-size: 2.5rem; }
+  .land-tagline { font-size: 1.0625rem; }
 }
 
 
@@ -489,222 +432,200 @@ a {
 /* ============================================================
    4 — DASHBOARD PAGE  (.dash-)
    ============================================================ */
-
 .dash-page {
   min-height: 100vh;
-  background: #f8eadc;
-  display: flex;
-  font-family: Arial, sans-serif;
+  background: #d8d6cf;
+  padding: 2rem;
+  color: #6f6a58;
+  font-family: Georgia, "Times New Roman", serif;
 }
 
-/* LEFT MENU */
 .dash-sidebar {
-  width: 72px;
-  background: #e97755;
-  margin: 24px 0 24px 24px;
-  border-radius: 28px;
-  padding: 24px 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 22px;
+  display: none;
 }
 
-.dash-sidebar button,
-.dash-menu {
-  background: none;
-  border: none;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-/* MAIN */
 .dash-container {
-  flex: 1;
-  background: #fffaf3;
-  margin: 24px;
-  border-radius: 28px;
-  padding: 28px;
+  max-width: 920px;
+  margin: 0 auto;
+  background: #f7efd8;
+  border: 1px solid #c9c1aa;
+  border-radius: 42px;
+  padding: 2.5rem;
+  min-height: 85vh;
 }
 
-/* TOP HERO */
+/* HERO */
 .dash-hero {
-  background: #fdf1df;
-  border-radius: 24px;
-  padding: 28px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  text-align: center;
+  padding: 1rem 1rem 2rem;
+  border-bottom: 1px solid #c9c1aa;
 }
 
 .dash-hero h1 {
-  margin: 0;
-  color: #243047;
-  font-size: 32px;
+  font-size: 3rem;
+  font-style: italic;
+  font-weight: 500;
+  color: #3f3b31;
+  margin-bottom: 0.5rem;
 }
 
 .dash-hero p {
-  color: #777;
+  color: #7d7664;
+  margin-bottom: 0.75rem;
 }
 
+/* BUTTONS */
 .dash-signout,
 .dash-new-btn,
+.dash-lang-btn,
 .dash-empty button {
-  background: #e97755;
-  color: white;
-  border: none;
-  border-radius: 14px;
-  padding: 12px 18px;
-  cursor: pointer;
-  font-weight: 600;
+  background: transparent;
+  color: #3f3b31;
+  border: 1px solid #c9c1aa;
+  border-radius: 10px;
+  padding: 0.7rem 2rem;
+  font-size: 1rem;
+  margin: 0.3rem;
+}
+
+.dash-signout:hover,
+.dash-new-btn:hover,
+.dash-lang-btn:hover,
+.dash-empty button:hover {
+  background: #e8dfc7;
 }
 
 /* STATS */
 .dash-stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-  margin: 24px 0;
+  gap: 1rem;
+  margin: 2rem 0;
 }
 
 .dash-stat-card {
-  background: white;
+  border: 1px solid #c9c1aa;
   border-radius: 22px;
-  padding: 22px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+  padding: 1.5rem;
+  text-align: center;
+  background: transparent;
 }
 
 .dash-stat-card span {
-  font-size: 28px;
+  font-size: 2rem;
+  opacity: 0.7;
 }
 
 .dash-stat-card h3 {
-  margin: 10px 0 4px;
-  color: #243047;
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin: 0.5rem 0;
+}
+
+.dash-stat-card p {
+  color: #7d7664;
 }
 
 /* CONTENT */
 .dash-content {
-  background: white;
-  border-radius: 24px;
-  padding: 24px;
+  border: 1px solid #c9c1aa;
+  border-radius: 28px;
+  padding: 1.8rem;
 }
 
 .dash-content-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 24px;
+  text-align: center;
+  margin-bottom: 1.5rem;
 }
 
 .dash-content-header h2 {
-  margin: 0;
+  font-size: 2rem;
+  font-weight: 500;
+  color: #3f3b31;
+}
+
+.dash-content-header p {
+  color: #7d7664;
 }
 
 /* EMPTY */
 .dash-empty {
   text-align: center;
-  padding: 50px;
-  border: 2px dashed #f0c8b5;
-  border-radius: 22px;
+  padding: 3rem 1rem;
 }
 
 .dash-empty-icon {
-  font-size: 45px;
+  font-size: 2rem;
+  margin-bottom: 1rem;
 }
 
 /* SURVEY CARDS */
 .dash-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 18px;
+  gap: 1rem;
 }
 
 .dash-survey-card {
-  background: #fff8ef;
-  border-radius: 22px;
-  padding: 20px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-}
-
-.dash-card-icon {
-  font-size: 32px;
+  border: 1px solid #c9c1aa;
+  border-radius: 24px;
+  padding: 1.4rem;
+  background: transparent;
 }
 
 .dash-survey-card h3 {
-  margin: 12px 0 6px;
-  color: #243047;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #3f3b31;
 }
 
-.dash-survey-card p {
-  color: #777;
-  font-size: 14px;
-}
-
+.dash-survey-card p,
 .dash-survey-card small {
-  color: #aaa;
+  color: #7d7664;
 }
 
+/* CARD ACTIONS */
 .dash-card-actions {
-  margin-top: 16px;
+  margin-top: 1rem;
   display: flex;
-  flex-direction: column;
-  gap: 8px;
+  gap: 0.6rem;
+  flex-wrap: wrap;
 }
 
 .dash-card-actions button {
-  border: none;
-  border-radius: 12px;
-  padding: 10px;
-  background: #f3d7c9;
-  cursor: pointer;
-  font-weight: 600;
+  background: transparent;
+  border: 1px solid #c9c1aa;
+  border-radius: 10px;
+  padding: 0.55rem 1rem;
+  color: #6f6a58;
+}
+
+.dash-card-actions button:hover {
+  background: #e8dfc7;
 }
 
 .dash-card-actions .delete {
-  background: #ffe0e0;
-  color: #c0392b;
+  color: #9b4d4d;
 }
 
 /* MOBILE */
 @media (max-width: 768px) {
   .dash-page {
-    flex-direction: column;
-  }
-
-  .dash-sidebar {
-    width: auto;
-    height: 70px;
-    margin: 16px;
-    flex-direction: row;
-    justify-content: center;
+    padding: 1rem;
   }
 
   .dash-container {
-    margin: 0 16px 16px;
+    padding: 1.5rem;
+    border-radius: 32px;
+  }
+
+  .dash-hero h1 {
+    font-size: 2.4rem;
   }
 
   .dash-stats {
     grid-template-columns: 1fr;
   }
-
-  .dash-hero {
-    flex-direction: column;
-    gap: 16px;
-    align-items: flex-start;
-  }
 }
-.dash-lang-btn {
-  background: transparent;
-  border: none;
-  color: #e97755;
-  font-weight: 700;
-  font-size: 15px;
-  cursor: pointer;
-  font-family: inherit;
-}
-
-
 /* ============================================================
    5 — CREATE SURVEY PAGE  (.create-)
    ============================================================ */
@@ -1221,24 +1142,3 @@ a {
 .u-mt-auto { margin-top: auto; }
 .u-mb-0    { margin-bottom: 0; }
 
-@keyframes dateShowcase {
-  0% {
-    transform: rotateY(0deg);
-  }
-
-  25% {
-    transform: rotateY(12deg);
-  }
-
-  50% {
-    transform: rotateY(0deg);
-  }
-
-  75% {
-    transform: rotateY(-12deg);
-  }
-
-  100% {
-    transform: rotateY(0deg);
-  }
-}
