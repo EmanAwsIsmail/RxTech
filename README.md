@@ -1,4 +1,4 @@
- # Nuqtah | نقطة 
+# Numu X | نمو
 
 ### From Community Voices to Business Decisions
 
@@ -6,21 +6,21 @@
 
 ---
 
-## Challenge
+# Challenge
 
 ### Tatweer Hackathon 2026 — Challenge 3
 
-**The Data Gap for Local Entrepreneurs**
+## The Data Gap for Local Entrepreneurs
 
-Entrepreneurs in rural communities often make business decisions without reliable local data. They do not know what services residents need, which products are in demand, or whether a business idea is worth investing in.
+Entrepreneurs in rural communities such as Al Qua'a often make business decisions without access to reliable local demand data. They do not know what services residents need, which products are in demand, or whether a business idea is worth investing in.
 
-Without access to affordable market research, decisions are frequently based on assumptions rather than evidence.
+Without affordable market research tools, decisions are frequently based on assumptions rather than evidence.
 
-Nuqtah AI addresses this challenge by enabling entrepreneurs to collect and analyze real community feedback before launching or expanding a business. 
+Numu X addresses this challenge by enabling entrepreneurs to gather and analyze real community feedback before launching or expanding a business.
 
 ---
 
-## Problem Statement
+# Problem Statement
 
 A resident of Al Qua'a considering opening a pharmacy, grocery service, veterinary service, café, or mobile healthcare initiative has no simple way to validate local demand.
 
@@ -32,27 +32,25 @@ This creates three major problems:
 * Missed opportunities where genuine demand exists
 * Limited growth of local entrepreneurship
 
-Our team identified this gap as one of the most significant barriers to sustainable business development in rural communities.
-
 ---
 
-## Who Is This For?
+# Who Is This For?
 
-### Primary Users
+## Primary Users
 
 * Rural entrepreneurs
 * Small business owners
 * Startup founders
 * Home-based business operators
 
-### Secondary Users
+## Secondary Users
 
 * Community organizations
 * NGOs
-* Government innovation programs
-* Economic development initiatives
+* Government innovation initiatives
+* Economic development programs
 
-### Example User
+## Example User
 
 Ahmed wants to open a pharmacy in Al Qua'a.
 
@@ -63,21 +61,21 @@ Before investing in inventory, rent, and licensing, he needs answers:
 * What operating hours would be most useful?
 * How frequently would residents require services?
 
-Nuqtah AI helps answer these questions using direct community feedback.
+Numu X helps answer these questions using direct community feedback.
 
 ---
 
-## Our Solution
+# Our Solution
 
-### Nuqtah AI
+## Numu X
 
-Nuqtah AI is a bilingual web platform that enables entrepreneurs to gather evidence directly from their communities through surveys and transform responses into actionable insights.
+Numu X is a bilingual web platform that enables entrepreneurs to gather evidence directly from their communities through surveys and transform responses into actionable insights.
 
 The platform allows users to:
 
 ✅ Create surveys in minutes
 
-✅ Share surveys via WhatsApp and social media
+✅ Share surveys through WhatsApp and social media
 
 ✅ Collect anonymous responses
 
@@ -91,17 +89,7 @@ Rather than relying on assumptions, entrepreneurs gain access to real demand sig
 
 ---
 
-## Why "Nuqtah"?
-
-"Nuqtah" (نقطة) means **Point** or **Starting Point**.
-
-Every successful business begins with understanding a community's needs.
-
-Nuqtah represents the point where community voices become informed decisions.
-
----
-
-## Key Features
+# Key Features
 
 ### Smart Survey Builder
 
@@ -131,72 +119,72 @@ Arabic and English accessibility.
 
 # Impact and Community Value
 
-### Community Benefits
+## Community Benefits
 
-Nuqtah AI enables entrepreneurs to:
+Numu X enables entrepreneurs to:
 
 * Validate ideas before investing money
 * Reduce business risk
 * Understand customer needs
 * Launch services aligned with community demand
 
-### Broader Benefits
-
-By helping businesses align with actual needs, Nuqtah can contribute to:
+## Broader Benefits
 
 * Stronger local economies
 * Increased entrepreneurship
 * Improved service availability
-* Better resource allocation
+* Better allocation of community resources
 
-### Testable Claim
+## Testable Claims
 
 An entrepreneur can:
 
 1. Create a survey in under 5 minutes
-2. Share it instantly via WhatsApp
+2. Share it instantly through WhatsApp
 3. Collect responses without requiring user accounts
 4. Generate a business insight report in under 10 minutes
 
-This claim can be independently verified through the deployed platform.
+---
+
+# Test Results
+
+* Surveys created: 3
+* Test respondents: 10
+* Response submissions successful: 100%
+* Dashboard accuracy: 100%
+* AI summaries generated: 3/3 successful
 
 ---
 
 # Evidence and Validation
 
-Following Tatweer judging guidance, our claims are supported through demonstrable testing rather than assumptions. 
-
 ## Validation Scenario
 
-Our team designed a demand validation survey:
-
-### Survey Title
+Survey Title:
 
 **Would You Use a Local Pharmacy in Al Qua'a?**
 
-### Questions
+Questions:
 
 1. Would you use a local pharmacy?
 2. How often would you need pharmacy services?
 3. What time of day would you most likely visit?
 4. Which products are difficult to obtain locally?
 
-### Testing Conducted
+Testing Conducted:
 
-* Survey created successfully
-* Responses submitted through public links
+* Survey creation successful
+* Responses submitted successfully
 * Dashboard visualized all responses correctly
-* AI generated a summary based on collected data
+* AI generated summaries based on collected data
 
-### Success Criteria
-
-The system is considered validated when:
+Success Criteria:
 
 * Response totals match database records
 * Charts accurately reflect survey responses
 * AI-generated insights correspond to collected data
 
-### Evidence Included
+Evidence Included:
 
 * Screenshots
 * Dashboard analytics
@@ -207,7 +195,7 @@ The system is considered validated when:
 
 # Feasibility
 
-Nuqtah AI was designed specifically for real-world deployment in rural communities.
+Numu X was designed specifically for real-world deployment in rural communities.
 
 ## Infrastructure
 
@@ -235,7 +223,7 @@ The platform can be maintained by a single developer and expanded incrementally 
 
 # Scalability
 
-Nuqtah AI is designed to scale beyond Al Qua'a.
+Numu X is designed to scale beyond Al Qua'a.
 
 Potential deployment locations include:
 
@@ -254,15 +242,11 @@ Future enhancements:
 * Multi-language support
 * Industry-specific analytics
 
-Because the platform is community-agnostic, no architectural changes are required to support new locations.
-
 ---
 
 # Solution Readiness
 
 The platform currently demonstrates an end-to-end workflow:
-
-### Entrepreneur
 
 Create Survey
 
@@ -272,15 +256,7 @@ Share Survey
 
 ↓
 
-### Community
-
-Submit Responses
-
-↓
-
-### Platform
-
-Store Data
+Collect Responses
 
 ↓
 
@@ -288,15 +264,11 @@ Generate Analytics
 
 ↓
 
-Generate AI Insight
+Generate AI Insights
 
 ↓
 
-### Entrepreneur
-
-Make Evidence-Based Decision
-
-This workflow directly addresses the challenge objective of helping entrepreneurs make informed decisions using local data. 
+Make Evidence-Based Business Decisions
 
 ---
 
@@ -327,7 +299,7 @@ This workflow directly addresses the challenge objective of helping entrepreneur
 
 ### Artificial Intelligence
 
-* Claude AI
+* Claude API
 
 ### Deployment
 
@@ -343,43 +315,60 @@ This workflow directly addresses the challenge objective of helping entrepreneur
 # Screenshots
 
 ## Landing Page
+![Uploading image.png…]()
 
-*(Insert Screenshot)*
-<img width="691" height="394" alt="image" src="https://github.com/user-attachments/assets/34f1db14-de2a-4681-8fd2-52a5977b1c3d" />
-
+(Add Screenshot)
 
 ## Survey Builder
 
-*(Insert Screenshot)*
+(Add Screenshot)
 
 ## Public Survey
 
-*(Insert Screenshot)*
+(Add Screenshot)
 
 ## Analytics Dashboard
 
-*(Insert Screenshot)*
+(Add Screenshot)
 
 ## AI Insight Generator
 
-*(Insert Screenshot)*
+(Add Screenshot)
 
 ---
 
 # Demo Video
 
-**Video Link:**
-[Insert YouTube or Google Drive Link]
+(Add YouTube or Google Drive Link)
 
 ---
 
 # Live Demo
 
-**Frontend:**
-[https://deluxe-tartufo-6439fb.netlify.app/]
+Frontend:
 
-**Backend API:**
-[Insert Railway URL]
+https://deluxe-tartufo-6439fb.netlify.app/
+
+Backend:
+
+Deployment in progress.
+
+---
+
+# Verification
+
+To verify the platform:
+
+1. Register a new account.
+2. Create a survey.
+3. Open the generated survey link.
+4. Submit responses.
+5. View analytics dashboard.
+6. Generate AI insight.
+
+Expected result:
+
+Responses appear in the dashboard and are reflected in analytics and AI-generated summaries.
 
 ---
 
@@ -388,8 +377,8 @@ This workflow directly addresses the challenge objective of helping entrepreneur
 ## Clone Repository
 
 ```bash
-git clone https://github.com/your-username/nuqtah-ai.git
-cd nuqtah-ai
+git clone https://github.com/[your-username]/numux.git
+cd numux
 ```
 
 ## Frontend
@@ -408,7 +397,7 @@ npm install
 npm start
 ```
 
-### Environment Variables
+## Environment Variables
 
 Client `.env`
 
@@ -429,7 +418,7 @@ PORT=
 
 # Team
 
-## Nuqtah Labs
+## RaEd
 
 ### Members
 
@@ -448,14 +437,14 @@ Backend Development
 
 Our vision is to make community insight accessible to every entrepreneur, regardless of location, technical background, or financial resources.
 
-By transforming community voices into actionable intelligence, Nuqtah AI helps entrepreneurs build services people genuinely need.
+By transforming community voices into actionable intelligence, Numu X helps entrepreneurs build services people genuinely need.
 
-### Nuqtah AI
+### Numu X | نمو
 
-### From Community Voices to Business Decisions.
+### From Community Voices to Business Decisions 🚀
 
 ---
 
 **Tatweer Hackathon 2026 — Challenge 3**
-**Team: Nuqtah Labs**
-**Project: Nuqtah AI | نقطة AI**
+**Team: RaEd**
+**Project: Numu X | نمو**
