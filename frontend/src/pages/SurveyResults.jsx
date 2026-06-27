@@ -1,3 +1,4 @@
+
 // SurveyResults.jsx  (protected — requires login)
 // Screen 3 + Screen 4: Shows charts for each question and the AI insight button
 // frontend/src/pages/SurveyResults.jsx
@@ -10,7 +11,6 @@ import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
 import QuestionChart from '../components/QuestionChart'
-import "../style.css";
 
 export default function SurveyResults() {
   const { id } = useParams()

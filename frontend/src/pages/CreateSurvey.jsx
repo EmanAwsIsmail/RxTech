@@ -3,12 +3,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
-<<<<<<< HEAD
-import "../style.css";
-
-=======
 import '../styles/shared.css'
->>>>>>> 1e03ba14b2dab1ab340368f0a705392c0bb02c3d
 const emptyQuestion = () => ({
   question_text: '',
   question_type: 'yes_no',

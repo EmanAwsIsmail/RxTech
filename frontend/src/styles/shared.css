@@ -1,5 +1,6 @@
 /* frontend/src/styles/shared.css */
-@reference "tailwindcss";
+/* frontend/src/styles/shared.css */
+@import "tailwindcss";
 
 /* Loading state */
 .page-loading {

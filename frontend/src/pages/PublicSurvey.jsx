@@ -5,7 +5,6 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
-import "../style.css";
 
 export default function PublicSurvey() {
   const { id } = useParams()
