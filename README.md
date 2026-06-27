@@ -299,7 +299,7 @@ Make Evidence-Based Business Decisions
 
 ### Artificial Intelligence
 
-* Claude API
+* GROQ API
 
 ### Deployment
 
@@ -338,9 +338,7 @@ Make Evidence-Based Business Decisions
 ---
 
 # Demo Video
-
-(Add YouTube or Google Drive Link)
-
+https://youtu.be/qRxXlk5HYnE
 ---
 
 # Live Demo
