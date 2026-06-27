@@ -100,7 +100,7 @@ export default function CreateSurvey() {
   return (
     <div className="page-shell">
       <header className="app-header">
-        <h1 className="app-logo">DemandQ</h1>
+        <h1 className="app-logo">NumuX</h1>
         <button onClick={() => navigate('/dashboard')} className="link-muted">
           ← Back
         </button>

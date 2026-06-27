@@ -101,7 +101,7 @@ export default function Dashboard() {
 )}
 
       <header className="app-header">
-        <h1 className="app-logo">DemandQ</h1>
+        <h1 className="app-logo">NumuX</h1>
         <div className="header-actions">
           <span className="header-email">{userName || userEmail}</span>
           <button onClick={handleSignOut} className="link-muted">

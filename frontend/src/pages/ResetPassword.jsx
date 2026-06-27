@@ -18,7 +18,7 @@ export default function ResetPassword() {
   if (done) return (
     <div className="page-centered">
       <div className="auth-card">
-        <h1 className="auth-title">DemandQ</h1>
+        <h1 className="auth-title">NumuX</h1>
         <p className="auth-subtitle" style={{ color: 'var(--color-oasis)' }}>Password updated! You can now sign in.</p>
         <button onClick={() => navigate('/login')} className="btn-primary">Go to Sign In</button>
       </div>
@@ -28,7 +28,7 @@ export default function ResetPassword() {
   return (
     <div className="page-centered">
       <div className="auth-card">
-        <h1 className="auth-title">DemandQ</h1>
+        <h1 className="auth-title">NumuX</h1>
         <p className="auth-subtitle">Enter your new password</p>
         {error && <p className="error-banner">{error}</p>}
         <input type="password" placeholder="New password" value={password}

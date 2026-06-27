@@ -141,7 +141,7 @@ export default function SurveyResults() {
           onClick={() => navigate('/dashboard')}
           className="app-logo"
         >
-          DemandQ
+          NumuX
         </button>
 
         <button
