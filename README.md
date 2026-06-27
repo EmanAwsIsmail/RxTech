@@ -310,32 +310,7 @@ Make Evidence-Based Business Decisions
 
 * GitHub
 
----
-
-# Screenshots
-
-## Landing Page
-![Uploading image.png…]()
-
-(Add Screenshot)
-
-## Survey Builder
-
-(Add Screenshot)
-
-## Public Survey
-
-(Add Screenshot)
-
-## Analytics Dashboard
-
-(Add Screenshot)
-
-## AI Insight Generator
-
-(Add Screenshot)
-
----
+--------------------------
 
 # Demo Video
 https://youtu.be/qRxXlk5HYnE
