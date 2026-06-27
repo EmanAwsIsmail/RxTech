@@ -342,15 +342,7 @@ https://youtu.be/qRxXlk5HYnE
 ---
 
 # Live Demo
-
-Frontend:
-
 https://deluxe-tartufo-6439fb.netlify.app/
-
-Backend:
-
-Deployment in progress.
-
 ---
 
 # Verification
