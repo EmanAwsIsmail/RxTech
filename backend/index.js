@@ -7,7 +7,9 @@ const app = express()
 const PORT = process.env.PORT || 4000
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY })
 
-app.use(cors())
+app.use(cors({
+  origin: ['https://deluxe-tartufo-6439fb.netlify.app', 'http://localhost:5173']
+}))
 app.use(express.json())
 
 app.get('/', (req, res) => res.send('DemandQ backend running.'))
