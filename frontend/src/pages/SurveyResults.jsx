@@ -109,15 +109,15 @@ export default function SurveyResults() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <p className="text-gray-400 text-sm">Loading results…</p>
+      <div className="page-loading-center">
+        <p className="text-muted-sm">Loading results…</p>
       </div>
     )
   }
 
   if (notFound) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="page-loading-center">
         <div className="text-center">
           <p className="text-gray-700 font-medium mb-2">Survey not found</p>
           <button
@@ -134,26 +134,26 @@ export default function SurveyResults() {
   // ── Main render ──────────────────────────────────────────────────────────────
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="page-shell">
 
       {/* Header */}
-      <header className="bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
+      <header className="app-header">
         <button
           onClick={() => navigate('/dashboard')}
-          className="text-blue-600 font-bold text-xl"
+          className="pp-logo"
         >
           DemandQ
         </button>
 
         <button
           onClick={() => navigate('/dashboard')}
-          className="text-sm text-gray-500 hover:text-gray-800"
+          className="link-muted"
         >
           ← Back to dashboard
         </button>
       </header>
 
-      <main className="max-w-2xl mx-auto px-6 py-10">
+      <main className="container-md">
 
         {/* Survey title + meta */}
         <div className="mb-2">
@@ -165,8 +165,8 @@ export default function SurveyResults() {
 
         {/* Response count + share link */}
         <div className="flex items-center justify-between mt-4 mb-8 flex-wrap gap-3">
-          <div className="flex items-center gap-2">
-            <span className="inline-flex items-center gap-1.5 bg-blue-50 text-blue-700 text-sm font-medium px-3 py-1 rounded-full">
+          <div className="badge-count">
+            <span className="badge-count">
               <span className="text-base font-bold">{responses.length}</span>
               {responses.length === 1 ? ' response' : ' responses'}
             </span>
@@ -176,8 +176,8 @@ export default function SurveyResults() {
 
         {/* No responses yet */}
         {responses.length === 0 && (
-          <div className="bg-amber-50 border border-amber-200 rounded-xl px-5 py-4 mb-8">
-            <p className="text-sm text-amber-800">
+          <div className="warning-box">
+            <p className="warning-text">
               No responses yet. Share the link above and check back once people have responded.
             </p>
           </div>
@@ -215,21 +215,21 @@ export default function SurveyResults() {
 
               {/* Loading state */}
               {insightLoading && (
-                <div className="bg-gray-50 border border-gray-200 rounded-xl px-5 py-4 text-sm text-gray-500 animate-pulse">
+                <div className="insight-loading">
                   Analysing responses…
                 </div>
               )}
 
               {/* Error */}
               {insightError && !insightLoading && (
-                <div className="bg-red-50 border border-red-200 rounded-xl px-5 py-4 text-sm text-red-700">
+                <div className="insight-error">
                   {insightError}
                 </div>
               )}
 
               {/* Insight result */}
               {insight && !insightLoading && (
-                <div className="bg-blue-50 border border-blue-200 rounded-xl px-5 py-4 text-sm text-blue-900 leading-relaxed">
+                <div className="insight-result">
                   {insight}
                 </div>
               )}

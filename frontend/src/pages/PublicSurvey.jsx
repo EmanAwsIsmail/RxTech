@@ -77,12 +77,12 @@ export default function PublicSurvey() {
     setSubmitted(true)
   }
 
-  if (loading) return <div className="p-6 text-center">Loading survey...</div>
-  if (error && !survey) return <div className="p-6 text-center text-red-600">{error}</div>
+  if (loading) return <div className="page-loading">Loading survey...</div>
+  if (error && !survey) return <div className="page-loading text-red-600">{error}</div>
 
   if (submitted) {
     return (
-      <div className="max-w-md mx-auto p-6 text-center mt-10">
+      <div className="public-thankyou">
         <h1 className="text-xl font-bold mb-2">Thank you!</h1>
         <p>Your response has been recorded.</p>
       </div>
@@ -90,7 +90,7 @@ export default function PublicSurvey() {
   }
 
   return (
-    <div className="max-w-md mx-auto p-6">
+    <div className="public-shell">
       <h1 className="text-xl font-bold mb-1">{survey.title}</h1>
       {survey.description && (
         <p className="text-gray-600 mb-4">{survey.description}</p>
@@ -104,7 +104,7 @@ export default function PublicSurvey() {
             {q.question_type === 'yes_no' && (
               <div className="flex gap-4">
                 {['Yes', 'No'].map(opt => (
-                  <label key={opt} className="flex items-center gap-1">
+                  <label key={opt} className="radio-label">
                     <input
                       type="radio"
                       name={q.id}
@@ -121,7 +121,7 @@ export default function PublicSurvey() {
             {q.question_type === 'multiple_choice' && (
               <div className="flex flex-col gap-1">
                 {(q.options || []).map(opt => (
-                  <label key={opt} className="flex items-center gap-1">
+                  <label key={opt} className="radio-label">
                     <input
                       type="radio"
                       name={q.id}
@@ -150,7 +150,7 @@ export default function PublicSurvey() {
 
         <button
           type="submit"
-          className="w-full bg-black text-white py-2 rounded"
+          className="btn-black-block"
         >
           Submit
         </button>

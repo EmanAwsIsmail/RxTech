@@ -1,10 +1,6 @@
 // frontend/src/pages/Landing.jsx
 // Homepage — public, no login needed
-import "../style.css"
-import { useState } from "react"
-import { useNavigate } from "react-router-dom"
-import landingTop from "../Images/landing_top.png"
-import landingBottom from "../Images/landing_bottom.png"
+import { Link } from 'react-router-dom'
 
 export default function Landing() {
   const navigate = useNavigate()
@@ -19,28 +15,17 @@ export default function Landing() {
   }
 
   return (
-    <div className={`land-page ${leaving ? "land-leaving" : ""}`}>
-      <div className="land-split land-top">
-        <img src={landingTop} alt="UAE design top" />
-      </div>
-
-<div className="land-content">
-  <h1 className="land-logo">
-     NumuX <span>نمو </span>
-  </h1>
-
-  <p className="land-tagline">
-    Find out what your community actually wants — before you spend a dirham.
-  </p>
-
-  <button onClick={goToLogin} className="land-cta">
-   Discover Customer Needs <span>استكشف احتياجات السوق المستهدف</span>
-   / * Create a Survey */
-  </button>
-</div>
-      <div className="land-split land-bottom">
-        <img src={landingBottom} alt="UAE design bottom" />
-      </div>
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 px-6 text-center">
+      <h1 className="text-3xl font-bold mb-3">DemandQ</h1>
+      <p className="text-gray-600 max-w-sm mb-8">
+        Find out what your community actually wants — before you spend a dirham.
+      </p>
+      <Link
+        to="/login"
+        className="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700"
+      >
+        Create a Survey
+      </Link>
     </div>
   )
 }

@@ -42,8 +42,8 @@ function TextSummary({ question, responses, questionId }) {
   }, [])
 
   return (
-    <div className="bg-white border border-gray-200 rounded-xl px-5 py-5">
-      <p className="font-semibold text-gray-900 mb-3">{question}</p>
+    <div className="chart-card">
+      <p className="chart-title-tight">{question}</p>
 
       {answers.length === 0 ? (
         <p className="text-sm text-gray-400">No answers yet.</p>
@@ -52,7 +52,7 @@ function TextSummary({ question, responses, questionId }) {
         <>
           <ul className="space-y-2 mb-3">
             {answers.map((a, i) => (
-              <li key={i} className="text-sm text-gray-700 bg-gray-50 rounded-lg px-4 py-2 border border-gray-100">
+              <li key={i} className="answer-list-item">
                 {a}
               </li>
             ))}
@@ -60,7 +60,7 @@ function TextSummary({ question, responses, questionId }) {
           <button
             onClick={() => setShown(true)}
             disabled={loading}
-            className="text-xs font-medium text-blue-600 hover:text-blue-800 border border-blue-200 rounded-lg px-3 py-1.5 disabled:opacity-50"
+            className="btn-ai-toggle"
           >
             {loading ? 'Preparing summary…' : 'Summarise with AI'}
           </button>
@@ -77,12 +77,12 @@ function TextSummary({ question, responses, questionId }) {
             onClick={() => setShown(false)}
             className="text-xs text-gray-400 hover:text-gray-600 mt-3"
           >
-            Show raw answers
+            Show all recorded answers
           </button>
         </>
       )}
 
-      <p className="text-xs text-gray-400 mt-3 text-right">
+      <p className="chart-footer-tight">
         {answers.length} answer{answers.length !== 1 ? 's' : ''}
       </p>
     </div>
@@ -109,8 +109,8 @@ export default function QuestionChart({ question, responses }) {
     ]
 
     return (
-      <div className="bg-white border border-gray-200 rounded-xl px-5 py-5">
-        <p className="font-semibold text-gray-900 mb-4">{question_text}</p>
+      <div className="chart-card">
+        <p className="chart-title">{question_text}</p>
         <ResponsiveContainer width="100%" height={180}>
           <BarChart data={data} barCategoryGap="40%">
             <XAxis
@@ -138,7 +138,7 @@ export default function QuestionChart({ question, responses }) {
             </Bar>
           </BarChart>
         </ResponsiveContainer>
-        <p className="text-xs text-gray-400 mt-2 text-right">
+        <p className="chart-footer">
           {yes + no} answer{yes + no !== 1 ? 's' : ''}
         </p>
       </div>
@@ -165,8 +165,8 @@ export default function QuestionChart({ question, responses }) {
     const total = data.reduce((s, d) => s + d.count, 0)
 
     return (
-      <div className="bg-white border border-gray-200 rounded-xl px-5 py-5">
-        <p className="font-semibold text-gray-900 mb-4">{question_text}</p>
+      <div className="chart-card">
+        <p className="chart-title">{question_text}</p>
         <ResponsiveContainer width="100%" height={Math.max(180, data.length * 52)}>
           <BarChart data={data} layout="vertical" barCategoryGap="30%">
             <XAxis
@@ -196,7 +196,7 @@ export default function QuestionChart({ question, responses }) {
             </Bar>
           </BarChart>
         </ResponsiveContainer>
-        <p className="text-xs text-gray-400 mt-2 text-right">
+        <p className="chart-footer">
           {total} answer{total !== 1 ? 's' : ''}
         </p>
       </div>
@@ -210,7 +210,7 @@ if (question_type === 'short_text') {
 
   // Fallback for unknown types
   return (
-    <div className="bg-white border border-gray-200 rounded-xl px-5 py-5">
+    <div className="chart-card">
       <p className="text-sm text-gray-500">Unknown question type: {question_type}</p>
     </div>
   )
