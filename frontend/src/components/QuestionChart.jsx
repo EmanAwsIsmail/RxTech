@@ -14,7 +14,7 @@ import {
   Cell,
 } from 'recharts'
 
-const BAR_COLORS = ['#2563eb', '#16a34a', '#d97706', '#dc2626']
+const BAR_COLORS = ['#B5651D', '#5C7A5E', '#9C5318', '#1F2A24']
 
 import { useEffect, useState } from 'react'
 
@@ -46,11 +46,11 @@ function TextSummary({ question, responses, questionId }) {
       <p className="chart-title-tight">{question}</p>
 
       {answers.length === 0 ? (
-        <p className="text-sm text-gray-400">No answers yet.</p>
+        <p className="text-empty">No answers yet.</p>
       ) : !shown ? (
         // Raw list + button
         <>
-          <ul className="space-y-2 mb-3">
+          <ul className="answer-list">
             {answers.map((a, i) => (
               <li key={i} className="answer-list-item">
                 {a}
@@ -69,13 +69,13 @@ function TextSummary({ question, responses, questionId }) {
         // AI summary
         <>
           {summary ? (
-            <p className="text-sm text-gray-700 leading-relaxed">{summary}</p>
+            <p className="summary-text">{summary}</p>
           ) : (
-            <p className="text-sm text-gray-400">Could not summarise. Check backend.</p>
+            <p className="text-empty">Could not summarise. Check backend.</p>
           )}
           <button
             onClick={() => setShown(false)}
-            className="text-xs text-gray-400 hover:text-gray-600 mt-3"
+            className="btn-show-toggle"
           >
             Show all recorded answers
           </button>
@@ -133,7 +133,7 @@ export default function QuestionChart({ question, responses }) {
             />
             <Bar dataKey="count" radius={[4, 4, 0, 0]}>
               {data.map((_, i) => (
-                <Cell key={i} fill={i === 0 ? '#2563eb' : '#e5e7eb'} />
+                <Cell key={i} fill={i === 0 ? '#B5651D' : '#E8E1D6'} />
               ))}
             </Bar>
           </BarChart>

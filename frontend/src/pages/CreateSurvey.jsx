@@ -107,7 +107,7 @@ export default function CreateSurvey() {
       </header>
 
       <main className="container-md">
-        <h2 className="text-2xl font-bold text-gray-900 mb-6">Create a survey</h2>
+        <h2 className="page-heading">Create a survey</h2>
 
         {error && (
           <p className="error-box">{error}</p>
@@ -138,7 +138,7 @@ export default function CreateSurvey() {
         </div>
 
         {/* Questions */}
-        <div className="space-y-5">
+        <div className="stack-lg">
           {questions.map((q, qIndex) => (
             <div key={qIndex} className="question-card">
               <div className="question-card-header">
@@ -172,8 +172,8 @@ export default function CreateSurvey() {
               </select>
 
               {q.question_type === 'multiple_choice' && (
-                <div className="space-y-2 mt-2">
-                  <p className="text-xs text-gray-500 mb-1">Options</p>
+                <div className="stack-sm">
+                  <p className="text-muted-sm mb-1">Options</p>
                   {q.options.map((opt, oIndex) => (
                     <div key={oIndex} className="option-row">
                       <input
@@ -186,7 +186,7 @@ export default function CreateSurvey() {
                       {q.options.length > 2 && (
                         <button
                           onClick={() => removeOption(qIndex, oIndex)}
-                          className="text-xs text-red-400 hover:text-red-600"
+                          className="btn-text-danger"
                         >
                           ✕
                         </button>
@@ -196,7 +196,7 @@ export default function CreateSurvey() {
                   {q.options.length < 4 && (
                     <button
                       onClick={() => addOption(qIndex)}
-                      className="text-xs text-blue-600 hover:underline mt-1"
+                      className="btn-link-blue mt-1"
                     >
                       + Add option
                     </button>
@@ -211,7 +211,7 @@ export default function CreateSurvey() {
         {questions.length < 5 && (
           <button
             onClick={addQuestion}
-            className="tbtn-dashed"
+            className="btn-dashed"
           >
             + Add question ({questions.length}/5)
           </button>

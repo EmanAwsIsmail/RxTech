@@ -1,4 +1,3 @@
-
 // SurveyResults.jsx  (protected — requires login)
 // Screen 3 + Screen 4: Shows charts for each question and the AI insight button
 // frontend/src/pages/SurveyResults.jsx
@@ -119,10 +118,10 @@ export default function SurveyResults() {
     return (
       <div className="page-loading-center">
         <div className="text-center">
-          <p className="text-gray-700 font-medium mb-2">Survey not found</p>
+          <p className="text-ink font-medium mb-2">Survey not found</p>
           <button
             onClick={() => navigate('/dashboard')}
-            className="text-sm text-blue-600 hover:underline"
+            className="text-sm text-clay hover:underline"
           >
             Back to dashboard
           </button>
@@ -140,7 +139,7 @@ export default function SurveyResults() {
       <header className="app-header">
         <button
           onClick={() => navigate('/dashboard')}
-          className="pp-logo"
+          className="app-logo"
         >
           DemandQ
         </button>
@@ -156,20 +155,18 @@ export default function SurveyResults() {
       <main className="container-md">
 
         {/* Survey title + meta */}
-        <div className="mb-2">
-          <h1 className="text-2xl font-bold text-gray-900">{survey.title}</h1>
+        <div className="results-meta">
+          <h1 className="results-title">{survey.title}</h1>
           {survey.description && (
-            <p className="text-gray-500 mt-1 text-sm">{survey.description}</p>
+            <p className="results-desc">{survey.description}</p>
           )}
         </div>
 
         {/* Response count + share link */}
-        <div className="flex items-center justify-between mt-4 mb-8 flex-wrap gap-3">
-          <div className="badge-count">
-            <span className="badge-count">
-              <span className="text-base font-bold">{responses.length}</span>
-              {responses.length === 1 ? ' response' : ' responses'}
-            </span>
+        <div className="results-toprow">
+           <div className="badge-count">
+            <span className="text-base font-bold">{responses.length}</span>
+            {responses.length === 1 ? ' response' : ' responses'}
           </div>
 
         </div>
@@ -184,7 +181,7 @@ export default function SurveyResults() {
         )}
 
         {/* Charts — one per question */}
-        <div className="space-y-5">
+        <div className="stack-lg">
           {questions.map((q) => (
             <QuestionChart key={q.id} question={q} responses={responses} />
           ))}
@@ -192,14 +189,14 @@ export default function SurveyResults() {
 
         {/* AI Insight section */}
         {responses.length > 0 && (
-          <div className="mt-10">
-            <div className="border-t border-gray-200 pt-8">
-              <div className="flex items-start justify-between gap-4 mb-4">
+          <div className="insight-section">
+            <div className="insight-divider">
+              <div className="insight-header-row">
                 <div>
-                  <h2 className="text-lg font-semibold text-gray-900">
+                  <h2 className="insight-heading">
                     AI insight
                   </h2>
-                  <p className="text-sm text-gray-500 mt-0.5">
+                  <p className="insight-subtext">
                     A plain-English summary of what your results mean.
                   </p>
                 </div>
@@ -207,7 +204,7 @@ export default function SurveyResults() {
                 <button
                   onClick={handleGenerateInsight}
                   disabled={insightLoading}
-                  className="shrink-0 bg-blue-600 text-white text-sm font-medium px-4 py-2 rounded-lg hover:bg-blue-700 disabled:opacity-60 disabled:cursor-not-allowed"
+                  className="btn-insight"
                 >
                   {insightLoading ? 'Analysing…' : 'Generate insight'}
                 </button>

@@ -77,12 +77,12 @@ export default function PublicSurvey() {
   }
 
   if (loading) return <div className="page-loading">Loading survey...</div>
-  if (error && !survey) return <div className="page-loading text-red-600">{error}</div>
+  if (error && !survey) return <div className="page-loading-error">{error}</div>
 
   if (submitted) {
     return (
       <div className="public-thankyou">
-        <h1 className="text-xl font-bold mb-2">Thank you!</h1>
+        <h1 className="thankyou-title">Thank you!</h1>
         <p>Your response has been recorded.</p>
       </div>
     )
@@ -90,22 +90,23 @@ export default function PublicSurvey() {
 
   return (
     <div className="public-shell">
-      <h1 className="text-xl font-bold mb-1">{survey.title}</h1>
+      <h1 className="public-title">{survey.title}</h1>
       {survey.description && (
-        <p className="text-gray-600 mb-4">{survey.description}</p>
+        <p className="public-desc">{survey.description}</p>
       )}
 
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={handleSubmit} className="public-form">
         {questions.map(q => (
           <div key={q.id}>
-            <p className="font-medium mb-2">{q.question_text}</p>
+            <p className="question-prompt">{q.question_text}</p>
 
             {q.question_type === 'yes_no' && (
-              <div className="flex gap-4">
+              <div className="option-group-row">
                 {['Yes', 'No'].map(opt => (
                   <label key={opt} className="radio-label">
                     <input
                       type="radio"
+                      className="radio-input"
                       name={q.id}
                       value={opt}
                       checked={answers[q.id] === opt}
@@ -118,7 +119,7 @@ export default function PublicSurvey() {
             )}
 
             {q.question_type === 'multiple_choice' && (
-              <div className="flex flex-col gap-1">
+              <div className="option-group-col">
                 {(q.options || []).map(opt => (
                   <label key={opt} className="radio-label">
                     <input
@@ -136,7 +137,7 @@ export default function PublicSurvey() {
 
             {q.question_type === 'short_text' && (
               <textarea
-                className="w-full border rounded p-2"
+                className="textarea-field"
                 rows={2}
                 value={answers[q.id] || ''}
                 onChange={e => handleChange(q.id, e.target.value)}
@@ -145,11 +146,11 @@ export default function PublicSurvey() {
           </div>
         ))}
 
-        {error && <p className="text-red-600">{error}</p>}
+        {error && <p className="error-text">{error}</p>}
 
         <button
           type="submit"
-          className="btn-black-block"
+          className="btn-primary"
         >
           Submit
         </button>

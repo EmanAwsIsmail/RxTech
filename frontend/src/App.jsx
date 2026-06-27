@@ -7,11 +7,13 @@ import CreateSurvey from './pages/CreateSurvey'
 import SurveyResults from './pages/SurveyResults'
 import PublicSurvey from './pages/PublicSurvey'
 import ProtectedRoute from './components/ProtectedRoute'
+import ResetPassword from './pages/ResetPassword'
 
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />
         <Route path="/survey/:id" element={<PublicSurvey />} />
