@@ -1,4 +1,4 @@
- # Nuqtah | نقطة 
+ # Numu X | نمو
 
 ### From Community Voices to Business Decisions
 
