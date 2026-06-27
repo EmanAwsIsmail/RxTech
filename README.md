@@ -345,6 +345,8 @@ This workflow directly addresses the challenge objective of helping entrepreneur
 ## Landing Page
 
 *(Insert Screenshot)*
+<img width="691" height="394" alt="image" src="https://github.com/user-attachments/assets/34f1db14-de2a-4681-8fd2-52a5977b1c3d" />
+
 
 ## Survey Builder
 
